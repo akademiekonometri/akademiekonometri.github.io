@@ -3755,7 +3755,7 @@ HTMLWidgets.widget({
     };
   },
   renderValue: function(el, data, instance) {
-    if (el.offsetWidth === 0 || el.offsetHeight === 0) {
+    if ((el.offsetWidth === 0 || el.offsetHeight === 0) && data.lazyRender !== false) {
       instance.data = data;
       return;
     }
@@ -5157,8 +5157,9 @@ overflow: visible;
 }
 </style>
 <style type="text/css" data-origin="pandoc">
+html { -webkit-text-size-adjust: 100%; }
 pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { line-height: 1.25; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -5169,7 +5170,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
 { counter-reset: source-line 0; }
@@ -5433,7 +5434,7 @@ border-radius: 0px;
 <h3 class="subtitle">Hafta #3 - Uygulama</h3>
 <h4 class="author"><a href="mailto:okara@ogu.edu.tr">Dr. Ömer
 Kara</a></h4>
-<h4 class="date">Friday, January 31, 2025</h4>
+<h4 class="date">Thursday, February 12, 2026</h4>
 
 </div>
 
@@ -5681,52 +5682,46 @@ fonksiyonlarla test edelim.
 <span id="cb5-10"><a href="#cb5-10" tabindex="-1"></a><span class="co">#&gt; -5.21760 -1.78123 -0.66593  1.14734  8.87955 </span></span>
 <span id="cb5-11"><a href="#cb5-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb5-12"><a href="#cb5-12" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; (Intercept)  1.05357    1.54796  0.6806  0.49902</span></span>
-<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; unem         0.50238    0.26556  1.8918  0.06389</span></span>
-<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt;              </span></span>
-<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; (Intercept)  </span></span>
-<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; unem        .</span></span>
-<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.9715 on 54 degrees of freedom</span></span>
-<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.062154,   Adjusted R-squared:  0.044786 </span></span>
-<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co">#&gt; F-statistic: 3.5787 on 1 and 54 DF,  p-value: 0.063892</span></span>
-<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co"># Parametre tahminleri, standart hataları, t-istatistikleri ve p-değerleri.</span></span>
-<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(model))</span>
-<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error   t value</span></span>
-<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="co">#&gt; (Intercept) 1.05356558 1.54795707 0.6806168</span></span>
-<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="co">#&gt; unem        0.50237822 0.26556242 1.8917519</span></span>
-<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="co">#&gt;                Pr(&gt;|t|)</span></span>
-<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co">#&gt; (Intercept) 0.499022048</span></span>
-<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="co">#&gt; unem        0.063891672</span></span>
-<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co"># pt fonksiyonu ile çift ve tek kuyruklu t-testi. Hesaplanan p-değeridir.</span></span>
-<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="at">q =</span> <span class="fu">abs</span>(<span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>, <span class="dv">3</span>]), <span class="at">df =</span> model<span class="sc">$</span>df.residual, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 != 0</span></span>
-<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="co">#&gt; [1] 0.063891672</span></span>
-<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>, <span class="dv">3</span>], <span class="at">df =</span> model<span class="sc">$</span>df.residual, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>) <span class="do">## Sol kuyruk t-testi: H0: Beta1 = 0 vs H1: Beta1 &lt; 0</span></span>
-<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co">#&gt; [1] 0.96805416</span></span>
-<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>, <span class="dv">3</span>], <span class="at">df =</span> model<span class="sc">$</span>df.residual, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="do">## Sağ kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 &gt; 0</span></span>
-<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="co">#&gt; [1] 0.031945836</span></span>
-<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="co"># hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
-<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="fu">hoCoef</span>(model, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 != 0 </span></span>
-<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T</span></span>
-<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="co">#&gt;     2        0 0.50237822 0.26556242 1.8917519</span></span>
-<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="co">#&gt;  df     p value</span></span>
-<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a><span class="co">#&gt;  54 0.063891672</span></span>
-<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="fu">hoCoef</span>(model, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;less&quot;</span>)) <span class="do">## Sol kuyruk t-testi: H0: Beta1 = 0 vs H1: Beta1 &lt; 0</span></span>
-<span id="cb5-48"><a href="#cb5-48" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T</span></span>
-<span id="cb5-49"><a href="#cb5-49" tabindex="-1"></a><span class="co">#&gt;     2        0 0.50237822 0.26556242 1.8917519</span></span>
-<span id="cb5-50"><a href="#cb5-50" tabindex="-1"></a><span class="co">#&gt;  df    p value</span></span>
-<span id="cb5-51"><a href="#cb5-51" tabindex="-1"></a><span class="co">#&gt;  54 0.96805416</span></span>
-<span id="cb5-52"><a href="#cb5-52" tabindex="-1"></a><span class="fu">hoCoef</span>(model, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;greater&quot;</span>)) <span class="do">## Sağ kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 &gt; 0</span></span>
-<span id="cb5-53"><a href="#cb5-53" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T</span></span>
-<span id="cb5-54"><a href="#cb5-54" tabindex="-1"></a><span class="co">#&gt;     2        0 0.50237822 0.26556242 1.8917519</span></span>
-<span id="cb5-55"><a href="#cb5-55" tabindex="-1"></a><span class="co">#&gt;  df     p value</span></span>
-<span id="cb5-56"><a href="#cb5-56" tabindex="-1"></a><span class="co">#&gt;  54 0.031945836</span></span>
-<span id="cb5-57"><a href="#cb5-57" tabindex="-1"></a><span class="co"># linearHypothesis fonksiyonu ile çift kuyruklu t-testi.</span></span>
-<span id="cb5-58"><a href="#cb5-58" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;unem = 0&quot;</span>)) <span class="do">## linearHypothesis fonksiyonu F-istatistiği ve ona ait p-değerini veriyor. Tek bir kısıt için hesaplanan F-istatistiğinin, aynı tek kısıt için hesaplanan t-istatistiğinin karesine eşit olduğunu unutmayın (ayrıca her iki testin sonucu da aynıdır).</span></span></code></pre></div>
+<span id="cb5-13"><a href="#cb5-13" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)  </span></span>
+<span id="cb5-14"><a href="#cb5-14" tabindex="-1"></a><span class="co">#&gt; (Intercept)  1.05357    1.54796  0.6806  0.49902  </span></span>
+<span id="cb5-15"><a href="#cb5-15" tabindex="-1"></a><span class="co">#&gt; unem         0.50238    0.26556  1.8918  0.06389 .</span></span>
+<span id="cb5-16"><a href="#cb5-16" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb5-17"><a href="#cb5-17" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb5-18"><a href="#cb5-18" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb5-19"><a href="#cb5-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb5-20"><a href="#cb5-20" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.9715 on 54 degrees of freedom</span></span>
+<span id="cb5-21"><a href="#cb5-21" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.062154,   Adjusted R-squared:  0.044786 </span></span>
+<span id="cb5-22"><a href="#cb5-22" tabindex="-1"></a><span class="co">#&gt; F-statistic: 3.5787 on 1 and 54 DF,  p-value: 0.063892</span></span>
+<span id="cb5-23"><a href="#cb5-23" tabindex="-1"></a><span class="co"># Parametre tahminleri, standart hataları, t-istatistikleri ve p-değerleri.</span></span>
+<span id="cb5-24"><a href="#cb5-24" tabindex="-1"></a><span class="fu">coef</span>(<span class="fu">summary</span>(model))</span>
+<span id="cb5-25"><a href="#cb5-25" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error   t value    Pr(&gt;|t|)</span></span>
+<span id="cb5-26"><a href="#cb5-26" tabindex="-1"></a><span class="co">#&gt; (Intercept) 1.05356558 1.54795707 0.6806168 0.499022048</span></span>
+<span id="cb5-27"><a href="#cb5-27" tabindex="-1"></a><span class="co">#&gt; unem        0.50237822 0.26556242 1.8917519 0.063891672</span></span>
+<span id="cb5-28"><a href="#cb5-28" tabindex="-1"></a><span class="co"># pt fonksiyonu ile çift ve tek kuyruklu t-testi. Hesaplanan p-değeridir.</span></span>
+<span id="cb5-29"><a href="#cb5-29" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(<span class="at">q =</span> <span class="fu">abs</span>(<span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>, <span class="dv">3</span>]), <span class="at">df =</span> model<span class="sc">$</span>df.residual, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 != 0</span></span>
+<span id="cb5-30"><a href="#cb5-30" tabindex="-1"></a><span class="co">#&gt; [1] 0.063891672</span></span>
+<span id="cb5-31"><a href="#cb5-31" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>, <span class="dv">3</span>], <span class="at">df =</span> model<span class="sc">$</span>df.residual, <span class="at">lower.tail =</span> <span class="cn">TRUE</span>) <span class="do">## Sol kuyruk t-testi: H0: Beta1 = 0 vs H1: Beta1 &lt; 0</span></span>
+<span id="cb5-32"><a href="#cb5-32" tabindex="-1"></a><span class="co">#&gt; [1] 0.96805416</span></span>
+<span id="cb5-33"><a href="#cb5-33" tabindex="-1"></a><span class="fu">pt</span>(<span class="at">q =</span> <span class="fu">coef</span>(<span class="fu">summary</span>(model))[<span class="dv">2</span>, <span class="dv">3</span>], <span class="at">df =</span> model<span class="sc">$</span>df.residual, <span class="at">lower.tail =</span> <span class="cn">FALSE</span>) <span class="do">## Sağ kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 &gt; 0</span></span>
+<span id="cb5-34"><a href="#cb5-34" tabindex="-1"></a><span class="co">#&gt; [1] 0.031945836</span></span>
+<span id="cb5-35"><a href="#cb5-35" tabindex="-1"></a><span class="co"># hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
+<span id="cb5-36"><a href="#cb5-36" tabindex="-1"></a><span class="fu">hoCoef</span>(model, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 != 0 </span></span>
+<span id="cb5-37"><a href="#cb5-37" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T df</span></span>
+<span id="cb5-38"><a href="#cb5-38" tabindex="-1"></a><span class="co">#&gt;     2        0 0.50237822 0.26556242 1.8917519 54</span></span>
+<span id="cb5-39"><a href="#cb5-39" tabindex="-1"></a><span class="co">#&gt;      p value</span></span>
+<span id="cb5-40"><a href="#cb5-40" tabindex="-1"></a><span class="co">#&gt;  0.063891672</span></span>
+<span id="cb5-41"><a href="#cb5-41" tabindex="-1"></a><span class="fu">hoCoef</span>(model, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;less&quot;</span>)) <span class="do">## Sol kuyruk t-testi: H0: Beta1 = 0 vs H1: Beta1 &lt; 0</span></span>
+<span id="cb5-42"><a href="#cb5-42" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T df</span></span>
+<span id="cb5-43"><a href="#cb5-43" tabindex="-1"></a><span class="co">#&gt;     2        0 0.50237822 0.26556242 1.8917519 54</span></span>
+<span id="cb5-44"><a href="#cb5-44" tabindex="-1"></a><span class="co">#&gt;     p value</span></span>
+<span id="cb5-45"><a href="#cb5-45" tabindex="-1"></a><span class="co">#&gt;  0.96805416</span></span>
+<span id="cb5-46"><a href="#cb5-46" tabindex="-1"></a><span class="fu">hoCoef</span>(model, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;greater&quot;</span>)) <span class="do">## Sağ kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 &gt; 0</span></span>
+<span id="cb5-47"><a href="#cb5-47" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T df</span></span>
+<span id="cb5-48"><a href="#cb5-48" tabindex="-1"></a><span class="co">#&gt;     2        0 0.50237822 0.26556242 1.8917519 54</span></span>
+<span id="cb5-49"><a href="#cb5-49" tabindex="-1"></a><span class="co">#&gt;      p value</span></span>
+<span id="cb5-50"><a href="#cb5-50" tabindex="-1"></a><span class="co">#&gt;  0.031945836</span></span>
+<span id="cb5-51"><a href="#cb5-51" tabindex="-1"></a><span class="co"># linearHypothesis fonksiyonu ile çift kuyruklu t-testi.</span></span>
+<span id="cb5-52"><a href="#cb5-52" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;unem = 0&quot;</span>)) <span class="do">## linearHypothesis fonksiyonu F-istatistiği ve ona ait p-değerini veriyor. Tek bir kısıt için hesaplanan F-istatistiğinin, aynı tek kısıt için hesaplanan t-istatistiğinin karesine eşit olduğunu unutmayın (ayrıca her iki testin sonucu da aynıdır).</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"55","2":"508.41555","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"54","2":"476.81569","3":"1","4":"31.599858","5":"3.5787252","6":"0.063891672","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
@@ -5808,14 +5803,14 @@ fonksiyonlarla test edelim.
 <span id="cb7-10"><a href="#cb7-10" tabindex="-1"></a><span class="co">#&gt; -3.99480 -1.16945  0.19594  0.96019  4.72236 </span></span>
 <span id="cb7-11"><a href="#cb7-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb7-12"><a href="#cb7-12" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value</span></span>
-<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; (Intercept) 1.733266   0.431967  4.0125</span></span>
-<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; inf         0.605866   0.082135  7.3765</span></span>
-<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt; def         0.513058   0.118384  4.3338</span></span>
-<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt;                   Pr(&gt;|t|)    </span></span>
-<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt; (Intercept)      0.0001898 ***</span></span>
-<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt; inf         0.000000001118 ***</span></span>
-<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt; def         0.000065723841 ***</span></span>
+<span id="cb7-13"><a href="#cb7-13" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value       Pr(&gt;|t|)</span></span>
+<span id="cb7-14"><a href="#cb7-14" tabindex="-1"></a><span class="co">#&gt; (Intercept) 1.733266   0.431967  4.0125      0.0001898</span></span>
+<span id="cb7-15"><a href="#cb7-15" tabindex="-1"></a><span class="co">#&gt; inf         0.605866   0.082135  7.3765 0.000000001118</span></span>
+<span id="cb7-16"><a href="#cb7-16" tabindex="-1"></a><span class="co">#&gt; def         0.513058   0.118384  4.3338 0.000065723841</span></span>
+<span id="cb7-17"><a href="#cb7-17" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb7-18"><a href="#cb7-18" tabindex="-1"></a><span class="co">#&gt; (Intercept) ***</span></span>
+<span id="cb7-19"><a href="#cb7-19" tabindex="-1"></a><span class="co">#&gt; inf         ***</span></span>
+<span id="cb7-20"><a href="#cb7-20" tabindex="-1"></a><span class="co">#&gt; def         ***</span></span>
 <span id="cb7-21"><a href="#cb7-21" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
 <span id="cb7-22"><a href="#cb7-22" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
 <span id="cb7-23"><a href="#cb7-23" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
@@ -5842,20 +5837,20 @@ fonksiyonlarla test edelim.
 <span id="cb7-44"><a href="#cb7-44" tabindex="-1"></a><span class="co">#&gt; [1] 0.000032861921</span></span>
 <span id="cb7-45"><a href="#cb7-45" tabindex="-1"></a><span class="co"># hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
 <span id="cb7-46"><a href="#cb7-46" tabindex="-1"></a><span class="fu">hoCoef</span>(model, <span class="at">term =</span> <span class="dv">3</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta2 = 0 vs H1: Beta2 != 0 </span></span>
-<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T</span></span>
-<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a><span class="co">#&gt;     3        0 0.51305785 0.11838406 4.3338425</span></span>
-<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="co">#&gt;  df        p value</span></span>
-<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="co">#&gt;  53 0.000065723841</span></span>
+<span id="cb7-47"><a href="#cb7-47" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T df</span></span>
+<span id="cb7-48"><a href="#cb7-48" tabindex="-1"></a><span class="co">#&gt;     3        0 0.51305785 0.11838406 4.3338425 53</span></span>
+<span id="cb7-49"><a href="#cb7-49" tabindex="-1"></a><span class="co">#&gt;         p value</span></span>
+<span id="cb7-50"><a href="#cb7-50" tabindex="-1"></a><span class="co">#&gt;  0.000065723841</span></span>
 <span id="cb7-51"><a href="#cb7-51" tabindex="-1"></a><span class="fu">hoCoef</span>(model, <span class="at">term =</span> <span class="dv">3</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;less&quot;</span>)) <span class="do">## Sol kuyruk t-testi: H0: Beta2 = 0 vs H1: Beta2 &lt; 0</span></span>
-<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T</span></span>
-<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="co">#&gt;     3        0 0.51305785 0.11838406 4.3338425</span></span>
-<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a><span class="co">#&gt;  df    p value</span></span>
-<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a><span class="co">#&gt;  53 0.99996714</span></span>
+<span id="cb7-52"><a href="#cb7-52" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T df</span></span>
+<span id="cb7-53"><a href="#cb7-53" tabindex="-1"></a><span class="co">#&gt;     3        0 0.51305785 0.11838406 4.3338425 53</span></span>
+<span id="cb7-54"><a href="#cb7-54" tabindex="-1"></a><span class="co">#&gt;     p value</span></span>
+<span id="cb7-55"><a href="#cb7-55" tabindex="-1"></a><span class="co">#&gt;  0.99996714</span></span>
 <span id="cb7-56"><a href="#cb7-56" tabindex="-1"></a><span class="fu">hoCoef</span>(model, <span class="at">term =</span> <span class="dv">3</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;greater&quot;</span>)) <span class="do">## Sağ kuyruklu t-testi: H0: Beta2 = 0 vs H1: Beta2 &gt; 0</span></span>
-<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T</span></span>
-<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a><span class="co">#&gt;     3        0 0.51305785 0.11838406 4.3338425</span></span>
-<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a><span class="co">#&gt;  df        p value</span></span>
-<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a><span class="co">#&gt;  53 0.000032861921</span></span>
+<span id="cb7-57"><a href="#cb7-57" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate Std. Error         T df</span></span>
+<span id="cb7-58"><a href="#cb7-58" tabindex="-1"></a><span class="co">#&gt;     3        0 0.51305785 0.11838406 4.3338425 53</span></span>
+<span id="cb7-59"><a href="#cb7-59" tabindex="-1"></a><span class="co">#&gt;         p value</span></span>
+<span id="cb7-60"><a href="#cb7-60" tabindex="-1"></a><span class="co">#&gt;  0.000032861921</span></span>
 <span id="cb7-61"><a href="#cb7-61" tabindex="-1"></a><span class="co"># linearHypothesis fonksiyonu ile çift kuyruklu t-testi.</span></span>
 <span id="cb7-62"><a href="#cb7-62" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;def = 0&quot;</span>)) <span class="do">## linearHypothesis fonksiyonu F-istatistiği ve ona ait p-değerini veriyor. Tek bir kısıt için hesaplanan F-istatistiğinin, aynı tek kısıt için hesaplanan t-istatistiğinin karesine eşit olduğunu unutmayın (ayrıca her iki testin sonucu da aynıdır).</span></span></code></pre></div>
 <div data-pagedtable="false">
@@ -5943,33 +5938,28 @@ durumda statik model kullanılmalıdır.</li>
 <span id="cb8-20"><a href="#cb8-20" tabindex="-1"></a><span class="co">#&gt; -3.89173 -1.73754 -0.82023  1.10824  8.10301 </span></span>
 <span id="cb8-21"><a href="#cb8-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb8-22"><a href="#cb8-22" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)</span></span>
-<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.12461    1.68923 -0.0738  0.94149</span></span>
-<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt; unem         0.90321    0.40207  2.2464  0.02913</span></span>
-<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="co">#&gt; L(unem, 1)  -0.85634    0.52570 -1.6289  0.10961</span></span>
-<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="co">#&gt; L(unem, 2)   0.66812    0.38672  1.7277  0.09022</span></span>
-<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co">#&gt;              </span></span>
-<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt; (Intercept)  </span></span>
-<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt; unem        *</span></span>
-<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt; L(unem, 1)   </span></span>
-<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt; L(unem, 2)  .</span></span>
-<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.8115 on 50 degrees of freedom</span></span>
-<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.14963,    Adjusted R-squared:  0.09861 </span></span>
-<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="co">#&gt; F-statistic: 2.9327 on 3 and 50 DF,  p-value: 0.042366</span></span>
-<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="co"># Modelin istatistiki olarak genel anlamlılığı için F-testi ve serbestlik dereceleri.</span></span>
-<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic</span>
-<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="co">#&gt;      value      numdf      dendf </span></span>
-<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="co">#&gt;  2.9326931  3.0000000 50.0000000</span></span>
-<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="co"># Hipotez Testi 1: pf fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi. Hesaplanan p-değeridir.</span></span>
-<span id="cb8-45"><a href="#cb8-45" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">1</span>], <span class="at">df1 =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">2</span>], <span class="at">df2 =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">3</span>], <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb8-46"><a href="#cb8-46" tabindex="-1"></a><span class="co">#&gt;       value </span></span>
-<span id="cb8-47"><a href="#cb8-47" tabindex="-1"></a><span class="co">#&gt; 0.042365995</span></span>
-<span id="cb8-48"><a href="#cb8-48" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi.</span></span>
-<span id="cb8-49"><a href="#cb8-49" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;unem = 0&quot;</span>, <span class="st">&quot;L(unem, 1) = 0&quot;</span>, <span class="st">&quot;L(unem, 2) = 0&quot;</span>))</span></code></pre></div>
+<span id="cb8-23"><a href="#cb8-23" tabindex="-1"></a><span class="co">#&gt;             Estimate Std. Error t value Pr(&gt;|t|)  </span></span>
+<span id="cb8-24"><a href="#cb8-24" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.12461    1.68923 -0.0738  0.94149  </span></span>
+<span id="cb8-25"><a href="#cb8-25" tabindex="-1"></a><span class="co">#&gt; unem         0.90321    0.40207  2.2464  0.02913 *</span></span>
+<span id="cb8-26"><a href="#cb8-26" tabindex="-1"></a><span class="co">#&gt; L(unem, 1)  -0.85634    0.52570 -1.6289  0.10961  </span></span>
+<span id="cb8-27"><a href="#cb8-27" tabindex="-1"></a><span class="co">#&gt; L(unem, 2)   0.66812    0.38672  1.7277  0.09022 .</span></span>
+<span id="cb8-28"><a href="#cb8-28" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb8-29"><a href="#cb8-29" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb8-30"><a href="#cb8-30" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb8-31"><a href="#cb8-31" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb8-32"><a href="#cb8-32" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 2.8115 on 50 degrees of freedom</span></span>
+<span id="cb8-33"><a href="#cb8-33" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.14963,    Adjusted R-squared:  0.09861 </span></span>
+<span id="cb8-34"><a href="#cb8-34" tabindex="-1"></a><span class="co">#&gt; F-statistic: 2.9327 on 3 and 50 DF,  p-value: 0.042366</span></span>
+<span id="cb8-35"><a href="#cb8-35" tabindex="-1"></a><span class="co"># Modelin istatistiki olarak genel anlamlılığı için F-testi ve serbestlik dereceleri.</span></span>
+<span id="cb8-36"><a href="#cb8-36" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic</span>
+<span id="cb8-37"><a href="#cb8-37" tabindex="-1"></a><span class="co">#&gt;      value      numdf      dendf </span></span>
+<span id="cb8-38"><a href="#cb8-38" tabindex="-1"></a><span class="co">#&gt;  2.9326931  3.0000000 50.0000000</span></span>
+<span id="cb8-39"><a href="#cb8-39" tabindex="-1"></a><span class="co"># Hipotez Testi 1: pf fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi. Hesaplanan p-değeridir.</span></span>
+<span id="cb8-40"><a href="#cb8-40" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">1</span>], <span class="at">df1 =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">2</span>], <span class="at">df2 =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">3</span>], <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb8-41"><a href="#cb8-41" tabindex="-1"></a><span class="co">#&gt;       value </span></span>
+<span id="cb8-42"><a href="#cb8-42" tabindex="-1"></a><span class="co">#&gt; 0.042365995</span></span>
+<span id="cb8-43"><a href="#cb8-43" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi.</span></span>
+<span id="cb8-44"><a href="#cb8-44" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;unem = 0&quot;</span>, <span class="st">&quot;L(unem, 1) = 0&quot;</span>, <span class="st">&quot;L(unem, 2) = 0&quot;</span>))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"53","2":"464.78001","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"50","2":"395.23401","3":"3","4":"69.546003","5":"2.9326931","6":"0.042365995","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
@@ -6090,35 +6080,29 @@ durumda statik model kullanılmalıdır.</li>
 <span id="cb11-16"><a href="#cb11-16" tabindex="-1"></a><span class="co">#&gt; -29.6650 -14.9228  -0.8975  17.8352  31.9035 </span></span>
 <span id="cb11-17"><a href="#cb11-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb11-18"><a href="#cb11-18" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value</span></span>
-<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co">#&gt; (Intercept) 91.4965402  4.5978984 19.8996</span></span>
-<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co">#&gt; pe          -0.0016293  0.1397850 -0.0117</span></span>
-<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co">#&gt; L(pe, 1)    -0.0382760  0.2185121 -0.1752</span></span>
-<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="co">#&gt; L(pe, 2)     0.1090428  0.2185342  0.4990</span></span>
-<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="co">#&gt; L(pe, 3)    -0.0414111  0.1376959 -0.3007</span></span>
-<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="co">#&gt;             Pr(&gt;|t|)    </span></span>
-<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="co">#&gt; (Intercept)   &lt;2e-16 ***</span></span>
-<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="co">#&gt; pe            0.9907    </span></span>
-<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a><span class="co">#&gt; L(pe, 1)      0.8615    </span></span>
-<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a><span class="co">#&gt; L(pe, 2)      0.6195    </span></span>
-<span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a><span class="co">#&gt; L(pe, 3)      0.7646    </span></span>
-<span id="cb11-31"><a href="#cb11-31" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb11-32"><a href="#cb11-32" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb11-33"><a href="#cb11-33" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb11-34"><a href="#cb11-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb11-35"><a href="#cb11-35" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 19.657 on 64 degrees of freedom</span></span>
-<span id="cb11-36"><a href="#cb11-36" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.013437,   Adjusted R-squared:  -0.048223 </span></span>
-<span id="cb11-37"><a href="#cb11-37" tabindex="-1"></a><span class="co">#&gt; F-statistic: 0.21792 on 4 and 64 DF,  p-value: 0.92753</span></span>
-<span id="cb11-38"><a href="#cb11-38" tabindex="-1"></a><span class="co"># Modelin istatistiki olarak genel anlamlılığı için F-testi ve serbestlik dereceleri.</span></span>
-<span id="cb11-39"><a href="#cb11-39" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic</span>
-<span id="cb11-40"><a href="#cb11-40" tabindex="-1"></a><span class="co">#&gt;       value       numdf       dendf </span></span>
-<span id="cb11-41"><a href="#cb11-41" tabindex="-1"></a><span class="co">#&gt;  0.21791753  4.00000000 64.00000000</span></span>
-<span id="cb11-42"><a href="#cb11-42" tabindex="-1"></a><span class="co"># Hipotez Testi 1: pf fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi. Hesaplanan p-değeridir.</span></span>
-<span id="cb11-43"><a href="#cb11-43" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">1</span>], <span class="at">df1 =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">2</span>], <span class="at">df2 =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">3</span>], <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb11-44"><a href="#cb11-44" tabindex="-1"></a><span class="co">#&gt;      value </span></span>
-<span id="cb11-45"><a href="#cb11-45" tabindex="-1"></a><span class="co">#&gt; 0.92752632</span></span>
-<span id="cb11-46"><a href="#cb11-46" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi.</span></span>
-<span id="cb11-47"><a href="#cb11-47" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;pe = 0&quot;</span>, <span class="st">&quot;L(pe, 1) = 0&quot;</span>, <span class="st">&quot;L(pe, 2) = 0&quot;</span>, <span class="st">&quot;L(pe, 3) = 0&quot;</span>))</span></code></pre></div>
+<span id="cb11-19"><a href="#cb11-19" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value Pr(&gt;|t|)    </span></span>
+<span id="cb11-20"><a href="#cb11-20" tabindex="-1"></a><span class="co">#&gt; (Intercept) 91.4965402  4.5978984 19.8996   &lt;2e-16 ***</span></span>
+<span id="cb11-21"><a href="#cb11-21" tabindex="-1"></a><span class="co">#&gt; pe          -0.0016293  0.1397850 -0.0117   0.9907    </span></span>
+<span id="cb11-22"><a href="#cb11-22" tabindex="-1"></a><span class="co">#&gt; L(pe, 1)    -0.0382760  0.2185121 -0.1752   0.8615    </span></span>
+<span id="cb11-23"><a href="#cb11-23" tabindex="-1"></a><span class="co">#&gt; L(pe, 2)     0.1090428  0.2185342  0.4990   0.6195    </span></span>
+<span id="cb11-24"><a href="#cb11-24" tabindex="-1"></a><span class="co">#&gt; L(pe, 3)    -0.0414111  0.1376959 -0.3007   0.7646    </span></span>
+<span id="cb11-25"><a href="#cb11-25" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb11-26"><a href="#cb11-26" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb11-27"><a href="#cb11-27" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb11-28"><a href="#cb11-28" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb11-29"><a href="#cb11-29" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 19.657 on 64 degrees of freedom</span></span>
+<span id="cb11-30"><a href="#cb11-30" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.013437,   Adjusted R-squared:  -0.048223 </span></span>
+<span id="cb11-31"><a href="#cb11-31" tabindex="-1"></a><span class="co">#&gt; F-statistic: 0.21792 on 4 and 64 DF,  p-value: 0.92753</span></span>
+<span id="cb11-32"><a href="#cb11-32" tabindex="-1"></a><span class="co"># Modelin istatistiki olarak genel anlamlılığı için F-testi ve serbestlik dereceleri.</span></span>
+<span id="cb11-33"><a href="#cb11-33" tabindex="-1"></a><span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic</span>
+<span id="cb11-34"><a href="#cb11-34" tabindex="-1"></a><span class="co">#&gt;       value       numdf       dendf </span></span>
+<span id="cb11-35"><a href="#cb11-35" tabindex="-1"></a><span class="co">#&gt;  0.21791753  4.00000000 64.00000000</span></span>
+<span id="cb11-36"><a href="#cb11-36" tabindex="-1"></a><span class="co"># Hipotez Testi 1: pf fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi. Hesaplanan p-değeridir.</span></span>
+<span id="cb11-37"><a href="#cb11-37" tabindex="-1"></a><span class="fu">pf</span>(<span class="at">q =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">1</span>], <span class="at">df1 =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">2</span>], <span class="at">df2 =</span> <span class="fu">summary</span>(model)<span class="sc">$</span>fstatistic[<span class="dv">3</span>], <span class="at">lower.tail =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb11-38"><a href="#cb11-38" tabindex="-1"></a><span class="co">#&gt;      value </span></span>
+<span id="cb11-39"><a href="#cb11-39" tabindex="-1"></a><span class="co">#&gt; 0.92752632</span></span>
+<span id="cb11-40"><a href="#cb11-40" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi.</span></span>
+<span id="cb11-41"><a href="#cb11-41" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;pe = 0&quot;</span>, <span class="st">&quot;L(pe, 1) = 0&quot;</span>, <span class="st">&quot;L(pe, 2) = 0&quot;</span>, <span class="st">&quot;L(pe, 3) = 0&quot;</span>))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"68","2":"25065.599","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"64","2":"24728.796","3":"4","4":"336.80239","5":"0.21791753","6":"0.92752632","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
@@ -6274,29 +6258,23 @@ R paketindeki <code>linearHypothesis</code> fonksiyonuyla test edelim.
 <span id="cb15-7"><a href="#cb15-7" tabindex="-1"></a><span class="co">#&gt;     singular.ok = FALSE)</span></span>
 <span id="cb15-8"><a href="#cb15-8" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb15-9"><a href="#cb15-9" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">#&gt;        Min         1Q     Median         3Q </span></span>
-<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">#&gt; -0.1171328 -0.0369975 -0.0059433  0.0281815 </span></span>
-<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co">#&gt;        Max </span></span>
-<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="co">#&gt;  0.1139378 </span></span>
-<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="co">#&gt;              Estimate Std. Error t value</span></span>
-<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co">#&gt; (Intercept) -1.054424   0.765406 -1.3776</span></span>
-<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co">#&gt; log(mincov) -0.154444   0.064901 -2.3797</span></span>
-<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="co">#&gt; log(usgnp)  -0.012189   0.088513 -0.1377</span></span>
-<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="co">#&gt;             Pr(&gt;|t|)  </span></span>
-<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co">#&gt; (Intercept)  0.17707  </span></span>
-<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co">#&gt; log(mincov)  0.02291 *</span></span>
-<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="co">#&gt; log(usgnp)   0.89126  </span></span>
-<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb15-27"><a href="#cb15-27" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb15-28"><a href="#cb15-28" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.055703 on 35 degrees of freedom</span></span>
-<span id="cb15-29"><a href="#cb15-29" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.66047,    Adjusted R-squared:  0.64107 </span></span>
-<span id="cb15-30"><a href="#cb15-30" tabindex="-1"></a><span class="co">#&gt; F-statistic: 34.043 on 2 and 35 DF,  p-value: 0.0000000061698</span></span>
-<span id="cb15-31"><a href="#cb15-31" tabindex="-1"></a><span class="co"># linearHypothesis fonksiyonu ile Beta1 için çift kuyruklu t-testi.</span></span>
-<span id="cb15-32"><a href="#cb15-32" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;log(mincov) = 0&quot;</span>)) <span class="do">## linearHypothesis fonksiyonu F-istatistiği ve ona ait p-değerini veriyor. Tek bir kısıt için hesaplanan F-istatistiğinin, aynı tek kısıt için hesaplanan t-istatistiğinin karesine eşit olduğunu unutmayın (ayrıca her iki testin sonucu da aynıdır).</span></span></code></pre></div>
+<span id="cb15-10"><a href="#cb15-10" tabindex="-1"></a><span class="co">#&gt;        Min         1Q     Median         3Q        Max </span></span>
+<span id="cb15-11"><a href="#cb15-11" tabindex="-1"></a><span class="co">#&gt; -0.1171328 -0.0369975 -0.0059433  0.0281815  0.1139378 </span></span>
+<span id="cb15-12"><a href="#cb15-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-13"><a href="#cb15-13" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb15-14"><a href="#cb15-14" tabindex="-1"></a><span class="co">#&gt;              Estimate Std. Error t value Pr(&gt;|t|)  </span></span>
+<span id="cb15-15"><a href="#cb15-15" tabindex="-1"></a><span class="co">#&gt; (Intercept) -1.054424   0.765406 -1.3776  0.17707  </span></span>
+<span id="cb15-16"><a href="#cb15-16" tabindex="-1"></a><span class="co">#&gt; log(mincov) -0.154444   0.064901 -2.3797  0.02291 *</span></span>
+<span id="cb15-17"><a href="#cb15-17" tabindex="-1"></a><span class="co">#&gt; log(usgnp)  -0.012189   0.088513 -0.1377  0.89126  </span></span>
+<span id="cb15-18"><a href="#cb15-18" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb15-19"><a href="#cb15-19" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb15-20"><a href="#cb15-20" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb15-21"><a href="#cb15-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb15-22"><a href="#cb15-22" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.055703 on 35 degrees of freedom</span></span>
+<span id="cb15-23"><a href="#cb15-23" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.66047,    Adjusted R-squared:  0.64107 </span></span>
+<span id="cb15-24"><a href="#cb15-24" tabindex="-1"></a><span class="co">#&gt; F-statistic: 34.043 on 2 and 35 DF,  p-value: 0.0000000061698</span></span>
+<span id="cb15-25"><a href="#cb15-25" tabindex="-1"></a><span class="co"># linearHypothesis fonksiyonu ile Beta1 için çift kuyruklu t-testi.</span></span>
+<span id="cb15-26"><a href="#cb15-26" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;log(mincov) = 0&quot;</span>)) <span class="do">## linearHypothesis fonksiyonu F-istatistiği ve ona ait p-değerini veriyor. Tek bir kısıt için hesaplanan F-istatistiğinin, aynı tek kısıt için hesaplanan t-istatistiğinin karesine eşit olduğunu unutmayın (ayrıca her iki testin sonucu da aynıdır).</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"36","2":"0.12617119","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"35","2":"0.10860015","3":"1","4":"0.017571034","5":"5.6628484","6":"0.022909767","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
@@ -6395,44 +6373,42 @@ durumda statik model kullanılmalıdır.</li>
 <span id="cb18-10"><a href="#cb18-10" tabindex="-1"></a><span class="co">#&gt;     2) + L(log(gnp), 3) + L(log(gnp), 4), data = data.ts, singular.ok = FALSE)</span></span>
 <span id="cb18-11"><a href="#cb18-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb18-12"><a href="#cb18-12" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co">#&gt;        Min         1Q     Median         3Q </span></span>
-<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co">#&gt; -0.0781203 -0.0344489 -0.0029804  0.0203917 </span></span>
-<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co">#&gt;        Max </span></span>
-<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co">#&gt;  0.1166780 </span></span>
-<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="co">#&gt;                 Estimate Std. Error t value</span></span>
-<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="co">#&gt; (Intercept)     1.150876   0.037327 30.8319</span></span>
-<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a><span class="co">#&gt; log(gnp)        0.419365   0.370508  1.1319</span></span>
-<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 1) -0.197023   0.628528 -0.3135</span></span>
-<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 2)  0.396474   0.628279  0.6310</span></span>
-<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 3) -0.216873   0.609075 -0.3561</span></span>
-<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 4)  0.214021   0.348924  0.6134</span></span>
-<span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a><span class="co">#&gt;                Pr(&gt;|t|)    </span></span>
-<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a><span class="co">#&gt; (Intercept)      &lt;2e-16 ***</span></span>
-<span id="cb18-28"><a href="#cb18-28" tabindex="-1"></a><span class="co">#&gt; log(gnp)         0.2598    </span></span>
-<span id="cb18-29"><a href="#cb18-29" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 1)   0.7544    </span></span>
-<span id="cb18-30"><a href="#cb18-30" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 2)   0.5292    </span></span>
-<span id="cb18-31"><a href="#cb18-31" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 3)   0.7224    </span></span>
-<span id="cb18-32"><a href="#cb18-32" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 4)   0.5407    </span></span>
-<span id="cb18-33"><a href="#cb18-33" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb18-34"><a href="#cb18-34" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb18-35"><a href="#cb18-35" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb18-36"><a href="#cb18-36" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb18-37"><a href="#cb18-37" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.0437 on 126 degrees of freedom</span></span>
-<span id="cb18-38"><a href="#cb18-38" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.99045,    Adjusted R-squared:  0.99007 </span></span>
-<span id="cb18-39"><a href="#cb18-39" tabindex="-1"></a><span class="co">#&gt; F-statistic: 2612.3 on 5 and 126 DF,  p-value: &lt; 2.22e-16</span></span>
-<span id="cb18-40"><a href="#cb18-40" tabindex="-1"></a><span class="co"># Parametre isimleri daha sonra kullanılmak üzere kaydediliyor.</span></span>
-<span id="cb18-41"><a href="#cb18-41" tabindex="-1"></a>coef.names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(model))</span>
-<span id="cb18-42"><a href="#cb18-42" tabindex="-1"></a></span>
-<span id="cb18-43"><a href="#cb18-43" tabindex="-1"></a><span class="co"># Etki çarpanının (kısa dönem esnekliği) hesaplanması.</span></span>
-<span id="cb18-44"><a href="#cb18-44" tabindex="-1"></a><span class="fu">coef</span>(model)[[<span class="dv">2</span>]]</span>
-<span id="cb18-45"><a href="#cb18-45" tabindex="-1"></a><span class="co">#&gt; [1] 0.41936523</span></span>
-<span id="cb18-46"><a href="#cb18-46" tabindex="-1"></a><span class="co"># Uzun dönem çarpanının (uzun dönem esnekliği) hesaplanması.</span></span>
-<span id="cb18-47"><a href="#cb18-47" tabindex="-1"></a><span class="fu">coef</span>(model)[[<span class="dv">2</span>]] <span class="sc">+</span> <span class="fu">coef</span>(model)[[<span class="dv">3</span>]] <span class="sc">+</span> <span class="fu">coef</span>(model)[[<span class="dv">4</span>]] <span class="sc">+</span> <span class="fu">coef</span>(model)[[<span class="dv">5</span>]] <span class="sc">+</span> <span class="fu">coef</span>(model)[[<span class="dv">6</span>]]</span>
-<span id="cb18-48"><a href="#cb18-48" tabindex="-1"></a><span class="co">#&gt; [1] 0.61596444</span></span>
-<span id="cb18-49"><a href="#cb18-49" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi.</span></span>
-<span id="cb18-50"><a href="#cb18-50" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;log(gnp) = 0&quot;</span>, <span class="st">&quot;L(log(gnp), 1) = 0&quot;</span>, <span class="st">&quot;L(log(gnp), 2) = 0&quot;</span>, <span class="st">&quot;L(log(gnp), 3) = 0&quot;</span>, <span class="st">&quot;L(log(gnp), 4) = 0&quot;</span>))</span></code></pre></div>
+<span id="cb18-13"><a href="#cb18-13" tabindex="-1"></a><span class="co">#&gt;        Min         1Q     Median         3Q        Max </span></span>
+<span id="cb18-14"><a href="#cb18-14" tabindex="-1"></a><span class="co">#&gt; -0.0781203 -0.0344489 -0.0029804  0.0203917  0.1166780 </span></span>
+<span id="cb18-15"><a href="#cb18-15" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-16"><a href="#cb18-16" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb18-17"><a href="#cb18-17" tabindex="-1"></a><span class="co">#&gt;                 Estimate Std. Error t value Pr(&gt;|t|)</span></span>
+<span id="cb18-18"><a href="#cb18-18" tabindex="-1"></a><span class="co">#&gt; (Intercept)     1.150876   0.037327 30.8319   &lt;2e-16</span></span>
+<span id="cb18-19"><a href="#cb18-19" tabindex="-1"></a><span class="co">#&gt; log(gnp)        0.419365   0.370508  1.1319   0.2598</span></span>
+<span id="cb18-20"><a href="#cb18-20" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 1) -0.197023   0.628528 -0.3135   0.7544</span></span>
+<span id="cb18-21"><a href="#cb18-21" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 2)  0.396474   0.628279  0.6310   0.5292</span></span>
+<span id="cb18-22"><a href="#cb18-22" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 3) -0.216873   0.609075 -0.3561   0.7224</span></span>
+<span id="cb18-23"><a href="#cb18-23" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 4)  0.214021   0.348924  0.6134   0.5407</span></span>
+<span id="cb18-24"><a href="#cb18-24" tabindex="-1"></a><span class="co">#&gt;                   </span></span>
+<span id="cb18-25"><a href="#cb18-25" tabindex="-1"></a><span class="co">#&gt; (Intercept)    ***</span></span>
+<span id="cb18-26"><a href="#cb18-26" tabindex="-1"></a><span class="co">#&gt; log(gnp)          </span></span>
+<span id="cb18-27"><a href="#cb18-27" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 1)    </span></span>
+<span id="cb18-28"><a href="#cb18-28" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 2)    </span></span>
+<span id="cb18-29"><a href="#cb18-29" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 3)    </span></span>
+<span id="cb18-30"><a href="#cb18-30" tabindex="-1"></a><span class="co">#&gt; L(log(gnp), 4)    </span></span>
+<span id="cb18-31"><a href="#cb18-31" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb18-32"><a href="#cb18-32" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb18-33"><a href="#cb18-33" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb18-34"><a href="#cb18-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb18-35"><a href="#cb18-35" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.0437 on 126 degrees of freedom</span></span>
+<span id="cb18-36"><a href="#cb18-36" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.99045,    Adjusted R-squared:  0.99007 </span></span>
+<span id="cb18-37"><a href="#cb18-37" tabindex="-1"></a><span class="co">#&gt; F-statistic: 2612.3 on 5 and 126 DF,  p-value: &lt; 2.22e-16</span></span>
+<span id="cb18-38"><a href="#cb18-38" tabindex="-1"></a><span class="co"># Parametre isimleri daha sonra kullanılmak üzere kaydediliyor.</span></span>
+<span id="cb18-39"><a href="#cb18-39" tabindex="-1"></a>coef.names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(model))</span>
+<span id="cb18-40"><a href="#cb18-40" tabindex="-1"></a></span>
+<span id="cb18-41"><a href="#cb18-41" tabindex="-1"></a><span class="co"># Etki çarpanının (kısa dönem esnekliği) hesaplanması.</span></span>
+<span id="cb18-42"><a href="#cb18-42" tabindex="-1"></a><span class="fu">coef</span>(model)[[<span class="dv">2</span>]]</span>
+<span id="cb18-43"><a href="#cb18-43" tabindex="-1"></a><span class="co">#&gt; [1] 0.41936523</span></span>
+<span id="cb18-44"><a href="#cb18-44" tabindex="-1"></a><span class="co"># Uzun dönem çarpanının (uzun dönem esnekliği) hesaplanması.</span></span>
+<span id="cb18-45"><a href="#cb18-45" tabindex="-1"></a><span class="fu">coef</span>(model)[[<span class="dv">2</span>]] <span class="sc">+</span> <span class="fu">coef</span>(model)[[<span class="dv">3</span>]] <span class="sc">+</span> <span class="fu">coef</span>(model)[[<span class="dv">4</span>]] <span class="sc">+</span> <span class="fu">coef</span>(model)[[<span class="dv">5</span>]] <span class="sc">+</span> <span class="fu">coef</span>(model)[[<span class="dv">6</span>]]</span>
+<span id="cb18-46"><a href="#cb18-46" tabindex="-1"></a><span class="co">#&gt; [1] 0.61596444</span></span>
+<span id="cb18-47"><a href="#cb18-47" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile modelin istatistiki olarak genel anlamlılığının testi.</span></span>
+<span id="cb18-48"><a href="#cb18-48" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;log(gnp) = 0&quot;</span>, <span class="st">&quot;L(log(gnp), 1) = 0&quot;</span>, <span class="st">&quot;L(log(gnp), 2) = 0&quot;</span>, <span class="st">&quot;L(log(gnp), 3) = 0&quot;</span>, <span class="st">&quot;L(log(gnp), 4) = 0&quot;</span>))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"131","2":"25.18321614","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"126","2":"0.24061573","3":"5","4":"24.9426","5":"2612.2712","6":"2.1647947e-125","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
@@ -6529,31 +6505,24 @@ R paketindeki <code>linearHypothesis</code> fonksiyonuyla test edelim.
 <span id="cb21-19"><a href="#cb21-19" tabindex="-1"></a><span class="co">#&gt; lm(formula = gfr ~ pe + ww2 + pill, data = data, singular.ok = FALSE)</span></span>
 <span id="cb21-20"><a href="#cb21-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb21-21"><a href="#cb21-21" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb21-22"><a href="#cb21-22" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q </span></span>
-<span id="cb21-23"><a href="#cb21-23" tabindex="-1"></a><span class="co">#&gt; -27.01866  -9.61954   0.33927   9.47460 </span></span>
-<span id="cb21-24"><a href="#cb21-24" tabindex="-1"></a><span class="co">#&gt;       Max </span></span>
-<span id="cb21-25"><a href="#cb21-25" tabindex="-1"></a><span class="co">#&gt;  28.07299 </span></span>
-<span id="cb21-26"><a href="#cb21-26" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb21-27"><a href="#cb21-27" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb21-28"><a href="#cb21-28" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value</span></span>
-<span id="cb21-29"><a href="#cb21-29" tabindex="-1"></a><span class="co">#&gt; (Intercept)  98.681755   3.208129 30.7599</span></span>
-<span id="cb21-30"><a href="#cb21-30" tabindex="-1"></a><span class="co">#&gt; pe            0.082540   0.029646  2.7842</span></span>
-<span id="cb21-31"><a href="#cb21-31" tabindex="-1"></a><span class="co">#&gt; ww2         -24.238395   7.458253 -3.2499</span></span>
-<span id="cb21-32"><a href="#cb21-32" tabindex="-1"></a><span class="co">#&gt; pill        -31.594034   4.081068 -7.7416</span></span>
-<span id="cb21-33"><a href="#cb21-33" tabindex="-1"></a><span class="co">#&gt;              Pr(&gt;|t|)    </span></span>
-<span id="cb21-34"><a href="#cb21-34" tabindex="-1"></a><span class="co">#&gt; (Intercept) &lt; 2.2e-16 ***</span></span>
-<span id="cb21-35"><a href="#cb21-35" tabindex="-1"></a><span class="co">#&gt; pe           0.006944 ** </span></span>
-<span id="cb21-36"><a href="#cb21-36" tabindex="-1"></a><span class="co">#&gt; ww2          0.001797 ** </span></span>
-<span id="cb21-37"><a href="#cb21-37" tabindex="-1"></a><span class="co">#&gt; pill        6.455e-11 ***</span></span>
-<span id="cb21-38"><a href="#cb21-38" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb21-39"><a href="#cb21-39" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb21-40"><a href="#cb21-40" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb21-41"><a href="#cb21-41" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb21-42"><a href="#cb21-42" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 14.685 on 68 degrees of freedom</span></span>
-<span id="cb21-43"><a href="#cb21-43" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.47342,    Adjusted R-squared:  0.45018 </span></span>
-<span id="cb21-44"><a href="#cb21-44" tabindex="-1"></a><span class="co">#&gt; F-statistic: 20.378 on 3 and 68 DF,  p-value: 0.0000000015748</span></span>
-<span id="cb21-45"><a href="#cb21-45" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile Beta1 için çift kuyruklu t-testi.</span></span>
-<span id="cb21-46"><a href="#cb21-46" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;pe = 0&quot;</span>))</span></code></pre></div>
+<span id="cb21-22"><a href="#cb21-22" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q       Max </span></span>
+<span id="cb21-23"><a href="#cb21-23" tabindex="-1"></a><span class="co">#&gt; -27.01866  -9.61954   0.33927   9.47460  28.07299 </span></span>
+<span id="cb21-24"><a href="#cb21-24" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-25"><a href="#cb21-25" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb21-26"><a href="#cb21-26" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value  Pr(&gt;|t|)    </span></span>
+<span id="cb21-27"><a href="#cb21-27" tabindex="-1"></a><span class="co">#&gt; (Intercept)  98.681755   3.208129 30.7599 &lt; 2.2e-16 ***</span></span>
+<span id="cb21-28"><a href="#cb21-28" tabindex="-1"></a><span class="co">#&gt; pe            0.082540   0.029646  2.7842  0.006944 ** </span></span>
+<span id="cb21-29"><a href="#cb21-29" tabindex="-1"></a><span class="co">#&gt; ww2         -24.238395   7.458253 -3.2499  0.001797 ** </span></span>
+<span id="cb21-30"><a href="#cb21-30" tabindex="-1"></a><span class="co">#&gt; pill        -31.594034   4.081068 -7.7416 6.455e-11 ***</span></span>
+<span id="cb21-31"><a href="#cb21-31" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb21-32"><a href="#cb21-32" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb21-33"><a href="#cb21-33" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb21-34"><a href="#cb21-34" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb21-35"><a href="#cb21-35" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 14.685 on 68 degrees of freedom</span></span>
+<span id="cb21-36"><a href="#cb21-36" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.47342,    Adjusted R-squared:  0.45018 </span></span>
+<span id="cb21-37"><a href="#cb21-37" tabindex="-1"></a><span class="co">#&gt; F-statistic: 20.378 on 3 and 68 DF,  p-value: 0.0000000015748</span></span>
+<span id="cb21-38"><a href="#cb21-38" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile Beta1 için çift kuyruklu t-testi.</span></span>
+<span id="cb21-39"><a href="#cb21-39" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;pe = 0&quot;</span>))</span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"69","2":"16335.910","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"68","2":"14664.274","3":"1","4":"1671.6363","5":"7.7515781","6":"0.0069439264","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
@@ -6685,20 +6654,20 @@ t_{0.975, \; n-k-1}\)</span>’dır.</li>
 <span id="cb25-20"><a href="#cb25-20" tabindex="-1"></a><span class="co">#&gt; -24.6461  -9.5409  -0.0312   8.3378  29.1295 </span></span>
 <span id="cb25-21"><a href="#cb25-21" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb25-22"><a href="#cb25-22" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb25-23"><a href="#cb25-23" tabindex="-1"></a><span class="co">#&gt;                Estimate  Std. Error t value</span></span>
-<span id="cb25-24"><a href="#cb25-24" tabindex="-1"></a><span class="co">#&gt; (Intercept)  95.8704975   3.2819571 29.2114</span></span>
-<span id="cb25-25"><a href="#cb25-25" tabindex="-1"></a><span class="co">#&gt; pe            0.0726718   0.1255331  0.5789</span></span>
-<span id="cb25-26"><a href="#cb25-26" tabindex="-1"></a><span class="co">#&gt; L(pe, 1)     -0.0057796   0.1556629 -0.0371</span></span>
-<span id="cb25-27"><a href="#cb25-27" tabindex="-1"></a><span class="co">#&gt; L(pe, 2)      0.0338268   0.1262574  0.2679</span></span>
-<span id="cb25-28"><a href="#cb25-28" tabindex="-1"></a><span class="co">#&gt; ww2         -22.1264975  10.7319716 -2.0617</span></span>
-<span id="cb25-29"><a href="#cb25-29" tabindex="-1"></a><span class="co">#&gt; pill        -31.3049888   3.9815591 -7.8625</span></span>
-<span id="cb25-30"><a href="#cb25-30" tabindex="-1"></a><span class="co">#&gt;              Pr(&gt;|t|)    </span></span>
-<span id="cb25-31"><a href="#cb25-31" tabindex="-1"></a><span class="co">#&gt; (Intercept) &lt; 2.2e-16 ***</span></span>
-<span id="cb25-32"><a href="#cb25-32" tabindex="-1"></a><span class="co">#&gt; pe             0.5647    </span></span>
-<span id="cb25-33"><a href="#cb25-33" tabindex="-1"></a><span class="co">#&gt; L(pe, 1)       0.9705    </span></span>
-<span id="cb25-34"><a href="#cb25-34" tabindex="-1"></a><span class="co">#&gt; L(pe, 2)       0.7896    </span></span>
-<span id="cb25-35"><a href="#cb25-35" tabindex="-1"></a><span class="co">#&gt; ww2            0.0433 *  </span></span>
-<span id="cb25-36"><a href="#cb25-36" tabindex="-1"></a><span class="co">#&gt; pill        5.634e-11 ***</span></span>
+<span id="cb25-23"><a href="#cb25-23" tabindex="-1"></a><span class="co">#&gt;                Estimate  Std. Error t value  Pr(&gt;|t|)</span></span>
+<span id="cb25-24"><a href="#cb25-24" tabindex="-1"></a><span class="co">#&gt; (Intercept)  95.8704975   3.2819571 29.2114 &lt; 2.2e-16</span></span>
+<span id="cb25-25"><a href="#cb25-25" tabindex="-1"></a><span class="co">#&gt; pe            0.0726718   0.1255331  0.5789    0.5647</span></span>
+<span id="cb25-26"><a href="#cb25-26" tabindex="-1"></a><span class="co">#&gt; L(pe, 1)     -0.0057796   0.1556629 -0.0371    0.9705</span></span>
+<span id="cb25-27"><a href="#cb25-27" tabindex="-1"></a><span class="co">#&gt; L(pe, 2)      0.0338268   0.1262574  0.2679    0.7896</span></span>
+<span id="cb25-28"><a href="#cb25-28" tabindex="-1"></a><span class="co">#&gt; ww2         -22.1264975  10.7319716 -2.0617    0.0433</span></span>
+<span id="cb25-29"><a href="#cb25-29" tabindex="-1"></a><span class="co">#&gt; pill        -31.3049888   3.9815591 -7.8625 5.634e-11</span></span>
+<span id="cb25-30"><a href="#cb25-30" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb25-31"><a href="#cb25-31" tabindex="-1"></a><span class="co">#&gt; (Intercept) ***</span></span>
+<span id="cb25-32"><a href="#cb25-32" tabindex="-1"></a><span class="co">#&gt; pe             </span></span>
+<span id="cb25-33"><a href="#cb25-33" tabindex="-1"></a><span class="co">#&gt; L(pe, 1)       </span></span>
+<span id="cb25-34"><a href="#cb25-34" tabindex="-1"></a><span class="co">#&gt; L(pe, 2)       </span></span>
+<span id="cb25-35"><a href="#cb25-35" tabindex="-1"></a><span class="co">#&gt; ww2         *  </span></span>
+<span id="cb25-36"><a href="#cb25-36" tabindex="-1"></a><span class="co">#&gt; pill        ***</span></span>
 <span id="cb25-37"><a href="#cb25-37" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
 <span id="cb25-38"><a href="#cb25-38" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
 <span id="cb25-39"><a href="#cb25-39" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
@@ -6769,10 +6738,10 @@ t_{0.975, \; n-k-1}\)</span>’dır.</li>
 <span id="cb27-40"><a href="#cb27-40" tabindex="-1"></a><span class="co">#&gt; F-statistic: 12.728 on 5 and 64 DF,  p-value: 0.000000013529</span></span>
 <span id="cb27-41"><a href="#cb27-41" tabindex="-1"></a><span class="co"># Hipotez Testi 3 (Model 2): hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
 <span id="cb27-42"><a href="#cb27-42" tabindex="-1"></a><span class="fu">hoCoef</span>(model<span class="fl">.2</span>, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Theta0 = 0 vs H1: Theta0 != 0 </span></span>
-<span id="cb27-43"><a href="#cb27-43" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate  Std. Error         T</span></span>
-<span id="cb27-44"><a href="#cb27-44" tabindex="-1"></a><span class="co">#&gt;     2        0 0.10071909 0.029802671 3.3795323</span></span>
-<span id="cb27-45"><a href="#cb27-45" tabindex="-1"></a><span class="co">#&gt;  df      p value</span></span>
-<span id="cb27-46"><a href="#cb27-46" tabindex="-1"></a><span class="co">#&gt;  64 0.0012408439</span></span>
+<span id="cb27-43"><a href="#cb27-43" tabindex="-1"></a><span class="co">#&gt;  term Ho Value   Estimate  Std. Error         T df</span></span>
+<span id="cb27-44"><a href="#cb27-44" tabindex="-1"></a><span class="co">#&gt;     2        0 0.10071909 0.029802671 3.3795323 64</span></span>
+<span id="cb27-45"><a href="#cb27-45" tabindex="-1"></a><span class="co">#&gt;       p value</span></span>
+<span id="cb27-46"><a href="#cb27-46" tabindex="-1"></a><span class="co">#&gt;  0.0012408439</span></span>
 <span id="cb27-47"><a href="#cb27-47" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model<span class="fl">.1</span>, <span class="fu">c</span>(<span class="st">&quot;pe + L(pe, 1) + L(pe, 2) = 0&quot;</span>)) <span class="do">## Model 1&#39;i dönüştürmeden direkt olarak Model 1&#39;in sonuçlarını kullanarak uzun dönem çarpanı </span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
@@ -6918,132 +6887,121 @@ edecektir. Yani, üstel trend modeli kullanılmıştır.</li>
 <span id="cb30-6"><a href="#cb30-6" tabindex="-1"></a><span class="co">#&gt; lm(formula = log(invpc) ~ log(price), data = data, singular.ok = FALSE)</span></span>
 <span id="cb30-7"><a href="#cb30-7" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb30-8"><a href="#cb30-8" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q </span></span>
-<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a><span class="co">#&gt; -0.459909 -0.086939 -0.012640  0.086506 </span></span>
-<span id="cb30-11"><a href="#cb30-11" tabindex="-1"></a><span class="co">#&gt;       Max </span></span>
-<span id="cb30-12"><a href="#cb30-12" tabindex="-1"></a><span class="co">#&gt;  0.346716 </span></span>
-<span id="cb30-13"><a href="#cb30-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-14"><a href="#cb30-14" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb30-15"><a href="#cb30-15" tabindex="-1"></a><span class="co">#&gt;              Estimate Std. Error t value</span></span>
-<span id="cb30-16"><a href="#cb30-16" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.550235   0.043027 -12.788</span></span>
-<span id="cb30-17"><a href="#cb30-17" tabindex="-1"></a><span class="co">#&gt; log(price)   1.240943   0.382419   3.245</span></span>
-<span id="cb30-18"><a href="#cb30-18" tabindex="-1"></a><span class="co">#&gt;              Pr(&gt;|t|)    </span></span>
-<span id="cb30-19"><a href="#cb30-19" tabindex="-1"></a><span class="co">#&gt; (Intercept) 1.027e-15 ***</span></span>
-<span id="cb30-20"><a href="#cb30-20" tabindex="-1"></a><span class="co">#&gt; log(price)   0.002376 ** </span></span>
-<span id="cb30-21"><a href="#cb30-21" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb30-22"><a href="#cb30-22" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb30-23"><a href="#cb30-23" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb30-24"><a href="#cb30-24" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-25"><a href="#cb30-25" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.15542 on 40 degrees of freedom</span></span>
-<span id="cb30-26"><a href="#cb30-26" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.20839,    Adjusted R-squared:  0.1886 </span></span>
-<span id="cb30-27"><a href="#cb30-27" tabindex="-1"></a><span class="co">#&gt; F-statistic:  10.53 on 1 and 40 DF,  p-value: 0.0023761</span></span>
-<span id="cb30-28"><a href="#cb30-28" tabindex="-1"></a><span class="co"># Hipotez Testi 1 (Model 1): hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
-<span id="cb30-29"><a href="#cb30-29" tabindex="-1"></a><span class="fu">hoCoef</span>(model<span class="fl">.1</span>, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 != 0</span></span>
-<span id="cb30-30"><a href="#cb30-30" tabindex="-1"></a><span class="co">#&gt;  term Ho Value  Estimate Std. Error         T df</span></span>
-<span id="cb30-31"><a href="#cb30-31" tabindex="-1"></a><span class="co">#&gt;     2        0 1.2409432 0.38241923 3.2449811 40</span></span>
-<span id="cb30-32"><a href="#cb30-32" tabindex="-1"></a><span class="co">#&gt;       p value</span></span>
-<span id="cb30-33"><a href="#cb30-33" tabindex="-1"></a><span class="co">#&gt;  0.0023761365</span></span>
-<span id="cb30-34"><a href="#cb30-34" tabindex="-1"></a><span class="co"># Hipotez Testi 2 (Model 1): hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
-<span id="cb30-35"><a href="#cb30-35" tabindex="-1"></a><span class="fu">hoCoef</span>(model<span class="fl">.1</span>, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">1</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 1 vs H1: Beta1 != 1</span></span>
-<span id="cb30-36"><a href="#cb30-36" tabindex="-1"></a><span class="co">#&gt;  term Ho Value  Estimate Std. Error          T</span></span>
-<span id="cb30-37"><a href="#cb30-37" tabindex="-1"></a><span class="co">#&gt;     2        1 1.2409432 0.38241923 0.63004991</span></span>
-<span id="cb30-38"><a href="#cb30-38" tabindex="-1"></a><span class="co">#&gt;  df    p value</span></span>
-<span id="cb30-39"><a href="#cb30-39" tabindex="-1"></a><span class="co">#&gt;  40 0.53224484</span></span>
-<span id="cb30-40"><a href="#cb30-40" tabindex="-1"></a><span class="co"># Model 2: Ev yatırımları değişkeni trend üzerine regres ediliyor.</span></span>
-<span id="cb30-41"><a href="#cb30-41" tabindex="-1"></a>model<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(invpc) <span class="sc">~</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb30-42"><a href="#cb30-42" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.2</span>) <span class="do">## Tahmin özeti.</span></span>
-<span id="cb30-43"><a href="#cb30-43" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-44"><a href="#cb30-44" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb30-45"><a href="#cb30-45" tabindex="-1"></a><span class="co">#&gt; lm(formula = log(invpc) ~ t, data = data, singular.ok = FALSE)</span></span>
-<span id="cb30-46"><a href="#cb30-46" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-47"><a href="#cb30-47" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb30-48"><a href="#cb30-48" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q </span></span>
-<span id="cb30-49"><a href="#cb30-49" tabindex="-1"></a><span class="co">#&gt; -0.462104 -0.077628 -0.018101  0.088091 </span></span>
-<span id="cb30-50"><a href="#cb30-50" tabindex="-1"></a><span class="co">#&gt;       Max </span></span>
-<span id="cb30-51"><a href="#cb30-51" tabindex="-1"></a><span class="co">#&gt;  0.277738 </span></span>
-<span id="cb30-52"><a href="#cb30-52" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-53"><a href="#cb30-53" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb30-54"><a href="#cb30-54" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error  t value</span></span>
-<span id="cb30-55"><a href="#cb30-55" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.8412918  0.0447440 -18.8023</span></span>
-<span id="cb30-56"><a href="#cb30-56" tabindex="-1"></a><span class="co">#&gt; t            0.0081459  0.0018129   4.4934</span></span>
-<span id="cb30-57"><a href="#cb30-57" tabindex="-1"></a><span class="co">#&gt;               Pr(&gt;|t|)    </span></span>
-<span id="cb30-58"><a href="#cb30-58" tabindex="-1"></a><span class="co">#&gt; (Intercept)  &lt; 2.2e-16 ***</span></span>
-<span id="cb30-59"><a href="#cb30-59" tabindex="-1"></a><span class="co">#&gt; t           0.00005854 ***</span></span>
-<span id="cb30-60"><a href="#cb30-60" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb30-61"><a href="#cb30-61" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb30-62"><a href="#cb30-62" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb30-9"><a href="#cb30-9" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q       Max </span></span>
+<span id="cb30-10"><a href="#cb30-10" tabindex="-1"></a><span class="co">#&gt; -0.459909 -0.086939 -0.012640  0.086506  0.346716 </span></span>
+<span id="cb30-11"><a href="#cb30-11" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-12"><a href="#cb30-12" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb30-13"><a href="#cb30-13" tabindex="-1"></a><span class="co">#&gt;              Estimate Std. Error t value  Pr(&gt;|t|)    </span></span>
+<span id="cb30-14"><a href="#cb30-14" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.550235   0.043027 -12.788 1.027e-15 ***</span></span>
+<span id="cb30-15"><a href="#cb30-15" tabindex="-1"></a><span class="co">#&gt; log(price)   1.240943   0.382419   3.245  0.002376 ** </span></span>
+<span id="cb30-16"><a href="#cb30-16" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb30-17"><a href="#cb30-17" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb30-18"><a href="#cb30-18" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb30-19"><a href="#cb30-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-20"><a href="#cb30-20" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.15542 on 40 degrees of freedom</span></span>
+<span id="cb30-21"><a href="#cb30-21" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.20839,    Adjusted R-squared:  0.1886 </span></span>
+<span id="cb30-22"><a href="#cb30-22" tabindex="-1"></a><span class="co">#&gt; F-statistic:  10.53 on 1 and 40 DF,  p-value: 0.0023761</span></span>
+<span id="cb30-23"><a href="#cb30-23" tabindex="-1"></a><span class="co"># Hipotez Testi 1 (Model 1): hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
+<span id="cb30-24"><a href="#cb30-24" tabindex="-1"></a><span class="fu">hoCoef</span>(model<span class="fl">.1</span>, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 != 0</span></span>
+<span id="cb30-25"><a href="#cb30-25" tabindex="-1"></a><span class="co">#&gt;  term Ho Value  Estimate Std. Error         T df</span></span>
+<span id="cb30-26"><a href="#cb30-26" tabindex="-1"></a><span class="co">#&gt;     2        0 1.2409432 0.38241923 3.2449811 40</span></span>
+<span id="cb30-27"><a href="#cb30-27" tabindex="-1"></a><span class="co">#&gt;       p value</span></span>
+<span id="cb30-28"><a href="#cb30-28" tabindex="-1"></a><span class="co">#&gt;  0.0023761365</span></span>
+<span id="cb30-29"><a href="#cb30-29" tabindex="-1"></a><span class="co"># Hipotez Testi 2 (Model 1): hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
+<span id="cb30-30"><a href="#cb30-30" tabindex="-1"></a><span class="fu">hoCoef</span>(model<span class="fl">.1</span>, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">1</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 1 vs H1: Beta1 != 1</span></span>
+<span id="cb30-31"><a href="#cb30-31" tabindex="-1"></a><span class="co">#&gt;  term Ho Value  Estimate Std. Error          T df</span></span>
+<span id="cb30-32"><a href="#cb30-32" tabindex="-1"></a><span class="co">#&gt;     2        1 1.2409432 0.38241923 0.63004991 40</span></span>
+<span id="cb30-33"><a href="#cb30-33" tabindex="-1"></a><span class="co">#&gt;     p value</span></span>
+<span id="cb30-34"><a href="#cb30-34" tabindex="-1"></a><span class="co">#&gt;  0.53224484</span></span>
+<span id="cb30-35"><a href="#cb30-35" tabindex="-1"></a><span class="co"># Model 2: Ev yatırımları değişkeni trend üzerine regres ediliyor.</span></span>
+<span id="cb30-36"><a href="#cb30-36" tabindex="-1"></a>model<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(invpc) <span class="sc">~</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb30-37"><a href="#cb30-37" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.2</span>) <span class="do">## Tahmin özeti.</span></span>
+<span id="cb30-38"><a href="#cb30-38" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-39"><a href="#cb30-39" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb30-40"><a href="#cb30-40" tabindex="-1"></a><span class="co">#&gt; lm(formula = log(invpc) ~ t, data = data, singular.ok = FALSE)</span></span>
+<span id="cb30-41"><a href="#cb30-41" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-42"><a href="#cb30-42" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb30-43"><a href="#cb30-43" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q       Max </span></span>
+<span id="cb30-44"><a href="#cb30-44" tabindex="-1"></a><span class="co">#&gt; -0.462104 -0.077628 -0.018101  0.088091  0.277738 </span></span>
+<span id="cb30-45"><a href="#cb30-45" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-46"><a href="#cb30-46" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb30-47"><a href="#cb30-47" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error  t value   Pr(&gt;|t|)</span></span>
+<span id="cb30-48"><a href="#cb30-48" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.8412918  0.0447440 -18.8023  &lt; 2.2e-16</span></span>
+<span id="cb30-49"><a href="#cb30-49" tabindex="-1"></a><span class="co">#&gt; t            0.0081459  0.0018129   4.4934 0.00005854</span></span>
+<span id="cb30-50"><a href="#cb30-50" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb30-51"><a href="#cb30-51" tabindex="-1"></a><span class="co">#&gt; (Intercept) ***</span></span>
+<span id="cb30-52"><a href="#cb30-52" tabindex="-1"></a><span class="co">#&gt; t           ***</span></span>
+<span id="cb30-53"><a href="#cb30-53" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb30-54"><a href="#cb30-54" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb30-55"><a href="#cb30-55" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb30-56"><a href="#cb30-56" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-57"><a href="#cb30-57" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14241 on 40 degrees of freedom</span></span>
+<span id="cb30-58"><a href="#cb30-58" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.33544,    Adjusted R-squared:  0.31883 </span></span>
+<span id="cb30-59"><a href="#cb30-59" tabindex="-1"></a><span class="co">#&gt; F-statistic:  20.19 on 1 and 40 DF,  p-value: 0.000058542</span></span>
+<span id="cb30-60"><a href="#cb30-60" tabindex="-1"></a><span class="co"># Model 3: Fiyatlar değişkeni trend üzerine regres ediliyor.</span></span>
+<span id="cb30-61"><a href="#cb30-61" tabindex="-1"></a>model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(price) <span class="sc">~</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb30-62"><a href="#cb30-62" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.3</span>) <span class="do">## Tahmin özeti.</span></span>
 <span id="cb30-63"><a href="#cb30-63" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-64"><a href="#cb30-64" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14241 on 40 degrees of freedom</span></span>
-<span id="cb30-65"><a href="#cb30-65" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.33544,    Adjusted R-squared:  0.31883 </span></span>
-<span id="cb30-66"><a href="#cb30-66" tabindex="-1"></a><span class="co">#&gt; F-statistic:  20.19 on 1 and 40 DF,  p-value: 0.000058542</span></span>
-<span id="cb30-67"><a href="#cb30-67" tabindex="-1"></a><span class="co"># Model 3: Fiyatlar değişkeni trend üzerine regres ediliyor.</span></span>
-<span id="cb30-68"><a href="#cb30-68" tabindex="-1"></a>model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(price) <span class="sc">~</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb30-69"><a href="#cb30-69" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.3</span>) <span class="do">## Tahmin özeti.</span></span>
+<span id="cb30-64"><a href="#cb30-64" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb30-65"><a href="#cb30-65" tabindex="-1"></a><span class="co">#&gt; lm(formula = log(price) ~ t, data = data, singular.ok = FALSE)</span></span>
+<span id="cb30-66"><a href="#cb30-66" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-67"><a href="#cb30-67" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb30-68"><a href="#cb30-68" tabindex="-1"></a><span class="co">#&gt;        Min         1Q     Median         3Q        Max </span></span>
+<span id="cb30-69"><a href="#cb30-69" tabindex="-1"></a><span class="co">#&gt; -0.0501080 -0.0259201 -0.0091733  0.0175128  0.0804895 </span></span>
 <span id="cb30-70"><a href="#cb30-70" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-71"><a href="#cb30-71" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb30-72"><a href="#cb30-72" tabindex="-1"></a><span class="co">#&gt; lm(formula = log(price) ~ t, data = data, singular.ok = FALSE)</span></span>
-<span id="cb30-73"><a href="#cb30-73" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-74"><a href="#cb30-74" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb30-75"><a href="#cb30-75" tabindex="-1"></a><span class="co">#&gt;        Min         1Q     Median         3Q </span></span>
-<span id="cb30-76"><a href="#cb30-76" tabindex="-1"></a><span class="co">#&gt; -0.0501080 -0.0259201 -0.0091733  0.0175128 </span></span>
-<span id="cb30-77"><a href="#cb30-77" tabindex="-1"></a><span class="co">#&gt;        Max </span></span>
-<span id="cb30-78"><a href="#cb30-78" tabindex="-1"></a><span class="co">#&gt;  0.0804895 </span></span>
-<span id="cb30-79"><a href="#cb30-79" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-80"><a href="#cb30-80" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb30-81"><a href="#cb30-81" tabindex="-1"></a><span class="co">#&gt;                Estimate  Std. Error t value</span></span>
-<span id="cb30-82"><a href="#cb30-82" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.18838598  0.01051215 -17.921</span></span>
-<span id="cb30-83"><a href="#cb30-83" tabindex="-1"></a><span class="co">#&gt; t            0.00441733  0.00042592  10.371</span></span>
-<span id="cb30-84"><a href="#cb30-84" tabindex="-1"></a><span class="co">#&gt;              Pr(&gt;|t|)    </span></span>
-<span id="cb30-85"><a href="#cb30-85" tabindex="-1"></a><span class="co">#&gt; (Intercept) &lt; 2.2e-16 ***</span></span>
-<span id="cb30-86"><a href="#cb30-86" tabindex="-1"></a><span class="co">#&gt; t           6.677e-13 ***</span></span>
-<span id="cb30-87"><a href="#cb30-87" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb30-88"><a href="#cb30-88" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb30-89"><a href="#cb30-89" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb30-90"><a href="#cb30-90" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-91"><a href="#cb30-91" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.033457 on 40 degrees of freedom</span></span>
-<span id="cb30-92"><a href="#cb30-92" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.72893,    Adjusted R-squared:  0.72216 </span></span>
-<span id="cb30-93"><a href="#cb30-93" tabindex="-1"></a><span class="co">#&gt; F-statistic: 107.57 on 1 and 40 DF,  p-value: 6.6769e-13</span></span>
-<span id="cb30-94"><a href="#cb30-94" tabindex="-1"></a><span class="co"># Model 4: Ev yatırımları ve fiyatları arasındaki trendli statik model.</span></span>
-<span id="cb30-95"><a href="#cb30-95" tabindex="-1"></a>model<span class="fl">.4</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(invpc) <span class="sc">~</span> <span class="fu">log</span>(price) <span class="sc">+</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb30-96"><a href="#cb30-96" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.4</span>) <span class="do">## Tahmin özeti.</span></span>
-<span id="cb30-97"><a href="#cb30-97" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-98"><a href="#cb30-98" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb30-99"><a href="#cb30-99" tabindex="-1"></a><span class="co">#&gt; lm(formula = log(invpc) ~ log(price) + t, data = data, singular.ok = FALSE)</span></span>
-<span id="cb30-100"><a href="#cb30-100" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-101"><a href="#cb30-101" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb30-102"><a href="#cb30-102" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q </span></span>
-<span id="cb30-103"><a href="#cb30-103" tabindex="-1"></a><span class="co">#&gt; -0.450919 -0.085832 -0.017342  0.085174 </span></span>
-<span id="cb30-104"><a href="#cb30-104" tabindex="-1"></a><span class="co">#&gt;       Max </span></span>
-<span id="cb30-105"><a href="#cb30-105" tabindex="-1"></a><span class="co">#&gt;  0.260242 </span></span>
-<span id="cb30-106"><a href="#cb30-106" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-107"><a href="#cb30-107" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb30-108"><a href="#cb30-108" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value</span></span>
-<span id="cb30-109"><a href="#cb30-109" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.9130596  0.1356134 -6.7328</span></span>
-<span id="cb30-110"><a href="#cb30-110" tabindex="-1"></a><span class="co">#&gt; log(price)  -0.3809613  0.6788352 -0.5612</span></span>
-<span id="cb30-111"><a href="#cb30-111" tabindex="-1"></a><span class="co">#&gt; t            0.0098287  0.0035122  2.7984</span></span>
-<span id="cb30-112"><a href="#cb30-112" tabindex="-1"></a><span class="co">#&gt;                  Pr(&gt;|t|)    </span></span>
-<span id="cb30-113"><a href="#cb30-113" tabindex="-1"></a><span class="co">#&gt; (Intercept) 0.00000004997 ***</span></span>
-<span id="cb30-114"><a href="#cb30-114" tabindex="-1"></a><span class="co">#&gt; log(price)       0.577873    </span></span>
-<span id="cb30-115"><a href="#cb30-115" tabindex="-1"></a><span class="co">#&gt; t                0.007939 ** </span></span>
-<span id="cb30-116"><a href="#cb30-116" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb30-117"><a href="#cb30-117" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb30-118"><a href="#cb30-118" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb30-119"><a href="#cb30-119" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb30-120"><a href="#cb30-120" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14364 on 39 degrees of freedom</span></span>
-<span id="cb30-121"><a href="#cb30-121" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.34077,    Adjusted R-squared:  0.30696 </span></span>
-<span id="cb30-122"><a href="#cb30-122" tabindex="-1"></a><span class="co">#&gt; F-statistic:  10.08 on 2 and 39 DF,  p-value: 0.00029599</span></span>
-<span id="cb30-123"><a href="#cb30-123" tabindex="-1"></a><span class="co"># Hipotez Testi 3 (Model 4): hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
-<span id="cb30-124"><a href="#cb30-124" tabindex="-1"></a><span class="fu">hoCoef</span>(model<span class="fl">.4</span>, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 != 0</span></span>
-<span id="cb30-125"><a href="#cb30-125" tabindex="-1"></a><span class="co">#&gt;  term Ho Value    Estimate Std. Error</span></span>
-<span id="cb30-126"><a href="#cb30-126" tabindex="-1"></a><span class="co">#&gt;     2        0 -0.38096133 0.67883522</span></span>
-<span id="cb30-127"><a href="#cb30-127" tabindex="-1"></a><span class="co">#&gt;            T df   p value</span></span>
-<span id="cb30-128"><a href="#cb30-128" tabindex="-1"></a><span class="co">#&gt;  -0.56119853 39 0.5778728</span></span>
-<span id="cb30-129"><a href="#cb30-129" tabindex="-1"></a><span class="co"># Hipotez Testi 4 (Model 4): hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
-<span id="cb30-130"><a href="#cb30-130" tabindex="-1"></a><span class="fu">hoCoef</span>(model<span class="fl">.4</span>, <span class="at">term =</span> <span class="dv">3</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta2 = 0 vs H1: Beta2 != 0</span></span>
-<span id="cb30-131"><a href="#cb30-131" tabindex="-1"></a><span class="co">#&gt;  term Ho Value     Estimate   Std. Error</span></span>
-<span id="cb30-132"><a href="#cb30-132" tabindex="-1"></a><span class="co">#&gt;     3        0 0.0098287258 0.0035122101</span></span>
-<span id="cb30-133"><a href="#cb30-133" tabindex="-1"></a><span class="co">#&gt;          T df      p value</span></span>
-<span id="cb30-134"><a href="#cb30-134" tabindex="-1"></a><span class="co">#&gt;  2.7984447 39 0.0079393592</span></span></code></pre></div>
+<span id="cb30-71"><a href="#cb30-71" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb30-72"><a href="#cb30-72" tabindex="-1"></a><span class="co">#&gt;                Estimate  Std. Error t value  Pr(&gt;|t|)</span></span>
+<span id="cb30-73"><a href="#cb30-73" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.18838598  0.01051215 -17.921 &lt; 2.2e-16</span></span>
+<span id="cb30-74"><a href="#cb30-74" tabindex="-1"></a><span class="co">#&gt; t            0.00441733  0.00042592  10.371 6.677e-13</span></span>
+<span id="cb30-75"><a href="#cb30-75" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb30-76"><a href="#cb30-76" tabindex="-1"></a><span class="co">#&gt; (Intercept) ***</span></span>
+<span id="cb30-77"><a href="#cb30-77" tabindex="-1"></a><span class="co">#&gt; t           ***</span></span>
+<span id="cb30-78"><a href="#cb30-78" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb30-79"><a href="#cb30-79" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb30-80"><a href="#cb30-80" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb30-81"><a href="#cb30-81" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-82"><a href="#cb30-82" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.033457 on 40 degrees of freedom</span></span>
+<span id="cb30-83"><a href="#cb30-83" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.72893,    Adjusted R-squared:  0.72216 </span></span>
+<span id="cb30-84"><a href="#cb30-84" tabindex="-1"></a><span class="co">#&gt; F-statistic: 107.57 on 1 and 40 DF,  p-value: 6.6769e-13</span></span>
+<span id="cb30-85"><a href="#cb30-85" tabindex="-1"></a><span class="co"># Model 4: Ev yatırımları ve fiyatları arasındaki trendli statik model.</span></span>
+<span id="cb30-86"><a href="#cb30-86" tabindex="-1"></a>model<span class="fl">.4</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(invpc) <span class="sc">~</span> <span class="fu">log</span>(price) <span class="sc">+</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb30-87"><a href="#cb30-87" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.4</span>) <span class="do">## Tahmin özeti.</span></span>
+<span id="cb30-88"><a href="#cb30-88" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-89"><a href="#cb30-89" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb30-90"><a href="#cb30-90" tabindex="-1"></a><span class="co">#&gt; lm(formula = log(invpc) ~ log(price) + t, data = data, singular.ok = FALSE)</span></span>
+<span id="cb30-91"><a href="#cb30-91" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-92"><a href="#cb30-92" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb30-93"><a href="#cb30-93" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q       Max </span></span>
+<span id="cb30-94"><a href="#cb30-94" tabindex="-1"></a><span class="co">#&gt; -0.450919 -0.085832 -0.017342  0.085174  0.260242 </span></span>
+<span id="cb30-95"><a href="#cb30-95" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-96"><a href="#cb30-96" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb30-97"><a href="#cb30-97" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value      Pr(&gt;|t|)</span></span>
+<span id="cb30-98"><a href="#cb30-98" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.9130596  0.1356134 -6.7328 0.00000004997</span></span>
+<span id="cb30-99"><a href="#cb30-99" tabindex="-1"></a><span class="co">#&gt; log(price)  -0.3809613  0.6788352 -0.5612      0.577873</span></span>
+<span id="cb30-100"><a href="#cb30-100" tabindex="-1"></a><span class="co">#&gt; t            0.0098287  0.0035122  2.7984      0.007939</span></span>
+<span id="cb30-101"><a href="#cb30-101" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb30-102"><a href="#cb30-102" tabindex="-1"></a><span class="co">#&gt; (Intercept) ***</span></span>
+<span id="cb30-103"><a href="#cb30-103" tabindex="-1"></a><span class="co">#&gt; log(price)     </span></span>
+<span id="cb30-104"><a href="#cb30-104" tabindex="-1"></a><span class="co">#&gt; t           ** </span></span>
+<span id="cb30-105"><a href="#cb30-105" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb30-106"><a href="#cb30-106" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb30-107"><a href="#cb30-107" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb30-108"><a href="#cb30-108" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb30-109"><a href="#cb30-109" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14364 on 39 degrees of freedom</span></span>
+<span id="cb30-110"><a href="#cb30-110" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.34077,    Adjusted R-squared:  0.30696 </span></span>
+<span id="cb30-111"><a href="#cb30-111" tabindex="-1"></a><span class="co">#&gt; F-statistic:  10.08 on 2 and 39 DF,  p-value: 0.00029599</span></span>
+<span id="cb30-112"><a href="#cb30-112" tabindex="-1"></a><span class="co"># Hipotez Testi 3 (Model 4): hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
+<span id="cb30-113"><a href="#cb30-113" tabindex="-1"></a><span class="fu">hoCoef</span>(model<span class="fl">.4</span>, <span class="at">term =</span> <span class="dv">2</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta1 = 0 vs H1: Beta1 != 0</span></span>
+<span id="cb30-114"><a href="#cb30-114" tabindex="-1"></a><span class="co">#&gt;  term Ho Value    Estimate Std. Error           T df</span></span>
+<span id="cb30-115"><a href="#cb30-115" tabindex="-1"></a><span class="co">#&gt;     2        0 -0.38096133 0.67883522 -0.56119853 39</span></span>
+<span id="cb30-116"><a href="#cb30-116" tabindex="-1"></a><span class="co">#&gt;    p value</span></span>
+<span id="cb30-117"><a href="#cb30-117" tabindex="-1"></a><span class="co">#&gt;  0.5778728</span></span>
+<span id="cb30-118"><a href="#cb30-118" tabindex="-1"></a><span class="co"># Hipotez Testi 4 (Model 4): hoCoef fonksiyonu ile çift ve tek kuyruklu t-testi.</span></span>
+<span id="cb30-119"><a href="#cb30-119" tabindex="-1"></a><span class="fu">hoCoef</span>(model<span class="fl">.4</span>, <span class="at">term =</span> <span class="dv">3</span>, <span class="at">bo =</span> <span class="dv">0</span>, <span class="at">alt =</span> <span class="fu">c</span>(<span class="st">&quot;two.sided&quot;</span>)) <span class="do">## Çift kuyruklu t-testi: H0: Beta2 = 0 vs H1: Beta2 != 0</span></span>
+<span id="cb30-120"><a href="#cb30-120" tabindex="-1"></a><span class="co">#&gt;  term Ho Value     Estimate   Std. Error         T df</span></span>
+<span id="cb30-121"><a href="#cb30-121" tabindex="-1"></a><span class="co">#&gt;     3        0 0.0098287258 0.0035122101 2.7984447 39</span></span>
+<span id="cb30-122"><a href="#cb30-122" tabindex="-1"></a><span class="co">#&gt;       p value</span></span>
+<span id="cb30-123"><a href="#cb30-123" tabindex="-1"></a><span class="co">#&gt;  0.0079393592</span></span></code></pre></div>
 </div>
 <div id="Trend.Variable.Example.2" class="section level3" number="6.1.2">
 <h3><span class="header-section-number">6.1.2</span> Örnek: 2</h3>
@@ -7090,33 +7048,24 @@ statik modeli tahmin edelim.
 <span id="cb31-12"><a href="#cb31-12" tabindex="-1"></a><span class="co">#&gt;     singular.ok = FALSE)</span></span>
 <span id="cb31-13"><a href="#cb31-13" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb31-14"><a href="#cb31-14" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb31-15"><a href="#cb31-15" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q </span></span>
-<span id="cb31-16"><a href="#cb31-16" tabindex="-1"></a><span class="co">#&gt; -25.97914  -6.97752  -0.27131   7.79746 </span></span>
-<span id="cb31-17"><a href="#cb31-17" tabindex="-1"></a><span class="co">#&gt;       Max </span></span>
-<span id="cb31-18"><a href="#cb31-18" tabindex="-1"></a><span class="co">#&gt;  19.98607 </span></span>
-<span id="cb31-19"><a href="#cb31-19" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb31-20"><a href="#cb31-20" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb31-21"><a href="#cb31-21" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value</span></span>
-<span id="cb31-22"><a href="#cb31-22" tabindex="-1"></a><span class="co">#&gt; (Intercept) 124.091935   4.360737 28.4566</span></span>
-<span id="cb31-23"><a href="#cb31-23" tabindex="-1"></a><span class="co">#&gt; pe            0.347813   0.040260  8.6392</span></span>
-<span id="cb31-24"><a href="#cb31-24" tabindex="-1"></a><span class="co">#&gt; ww2         -35.880277   5.707921 -6.2860</span></span>
-<span id="cb31-25"><a href="#cb31-25" tabindex="-1"></a><span class="co">#&gt; pill        -10.119723   6.336094 -1.5972</span></span>
-<span id="cb31-26"><a href="#cb31-26" tabindex="-1"></a><span class="co">#&gt; t            -2.531426   0.389386 -6.5011</span></span>
-<span id="cb31-27"><a href="#cb31-27" tabindex="-1"></a><span class="co">#&gt; I(t^2)        0.019613   0.004971  3.9454</span></span>
-<span id="cb31-28"><a href="#cb31-28" tabindex="-1"></a><span class="co">#&gt;              Pr(&gt;|t|)    </span></span>
-<span id="cb31-29"><a href="#cb31-29" tabindex="-1"></a><span class="co">#&gt; (Intercept) &lt; 2.2e-16 ***</span></span>
-<span id="cb31-30"><a href="#cb31-30" tabindex="-1"></a><span class="co">#&gt; pe          1.907e-12 ***</span></span>
-<span id="cb31-31"><a href="#cb31-31" tabindex="-1"></a><span class="co">#&gt; ww2         2.947e-08 ***</span></span>
-<span id="cb31-32"><a href="#cb31-32" tabindex="-1"></a><span class="co">#&gt; pill        0.1150085    </span></span>
-<span id="cb31-33"><a href="#cb31-33" tabindex="-1"></a><span class="co">#&gt; t           1.237e-08 ***</span></span>
-<span id="cb31-34"><a href="#cb31-34" tabindex="-1"></a><span class="co">#&gt; I(t^2)      0.0001956 ***</span></span>
-<span id="cb31-35"><a href="#cb31-35" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb31-36"><a href="#cb31-36" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb31-37"><a href="#cb31-37" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb31-38"><a href="#cb31-38" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb31-39"><a href="#cb31-39" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 10.739 on 66 degrees of freedom</span></span>
-<span id="cb31-40"><a href="#cb31-40" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.72668,    Adjusted R-squared:  0.70597 </span></span>
-<span id="cb31-41"><a href="#cb31-41" tabindex="-1"></a><span class="co">#&gt; F-statistic: 35.094 on 5 and 66 DF,  p-value: &lt; 2.22e-16</span></span></code></pre></div>
+<span id="cb31-15"><a href="#cb31-15" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q       Max </span></span>
+<span id="cb31-16"><a href="#cb31-16" tabindex="-1"></a><span class="co">#&gt; -25.97914  -6.97752  -0.27131   7.79746  19.98607 </span></span>
+<span id="cb31-17"><a href="#cb31-17" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-18"><a href="#cb31-18" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb31-19"><a href="#cb31-19" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value  Pr(&gt;|t|)    </span></span>
+<span id="cb31-20"><a href="#cb31-20" tabindex="-1"></a><span class="co">#&gt; (Intercept) 124.091935   4.360737 28.4566 &lt; 2.2e-16 ***</span></span>
+<span id="cb31-21"><a href="#cb31-21" tabindex="-1"></a><span class="co">#&gt; pe            0.347813   0.040260  8.6392 1.907e-12 ***</span></span>
+<span id="cb31-22"><a href="#cb31-22" tabindex="-1"></a><span class="co">#&gt; ww2         -35.880277   5.707921 -6.2860 2.947e-08 ***</span></span>
+<span id="cb31-23"><a href="#cb31-23" tabindex="-1"></a><span class="co">#&gt; pill        -10.119723   6.336094 -1.5972 0.1150085    </span></span>
+<span id="cb31-24"><a href="#cb31-24" tabindex="-1"></a><span class="co">#&gt; t            -2.531426   0.389386 -6.5011 1.237e-08 ***</span></span>
+<span id="cb31-25"><a href="#cb31-25" tabindex="-1"></a><span class="co">#&gt; I(t^2)        0.019613   0.004971  3.9454 0.0001956 ***</span></span>
+<span id="cb31-26"><a href="#cb31-26" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb31-27"><a href="#cb31-27" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb31-28"><a href="#cb31-28" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb31-29"><a href="#cb31-29" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb31-30"><a href="#cb31-30" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 10.739 on 66 degrees of freedom</span></span>
+<span id="cb31-31"><a href="#cb31-31" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.72668,    Adjusted R-squared:  0.70597 </span></span>
+<span id="cb31-32"><a href="#cb31-32" tabindex="-1"></a><span class="co">#&gt; F-statistic: 35.094 on 5 and 66 DF,  p-value: &lt; 2.22e-16</span></span></code></pre></div>
 </div>
 </div>
 <div id="Detrending.Example" class="section level2" number="6.2">
@@ -7187,126 +7136,117 @@ inceleyelim.</li>
 <span id="cb32-11"><a href="#cb32-11" tabindex="-1"></a><span class="co">#&gt; lm(formula = log(invpc) ~ log(price) + t, data = data, singular.ok = FALSE)</span></span>
 <span id="cb32-12"><a href="#cb32-12" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb32-13"><a href="#cb32-13" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb32-14"><a href="#cb32-14" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q </span></span>
-<span id="cb32-15"><a href="#cb32-15" tabindex="-1"></a><span class="co">#&gt; -0.450919 -0.085832 -0.017342  0.085174 </span></span>
-<span id="cb32-16"><a href="#cb32-16" tabindex="-1"></a><span class="co">#&gt;       Max </span></span>
-<span id="cb32-17"><a href="#cb32-17" tabindex="-1"></a><span class="co">#&gt;  0.260242 </span></span>
-<span id="cb32-18"><a href="#cb32-18" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-19"><a href="#cb32-19" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb32-20"><a href="#cb32-20" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value</span></span>
-<span id="cb32-21"><a href="#cb32-21" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.9130596  0.1356134 -6.7328</span></span>
-<span id="cb32-22"><a href="#cb32-22" tabindex="-1"></a><span class="co">#&gt; log(price)  -0.3809613  0.6788352 -0.5612</span></span>
-<span id="cb32-23"><a href="#cb32-23" tabindex="-1"></a><span class="co">#&gt; t            0.0098287  0.0035122  2.7984</span></span>
-<span id="cb32-24"><a href="#cb32-24" tabindex="-1"></a><span class="co">#&gt;                  Pr(&gt;|t|)    </span></span>
-<span id="cb32-25"><a href="#cb32-25" tabindex="-1"></a><span class="co">#&gt; (Intercept) 0.00000004997 ***</span></span>
-<span id="cb32-26"><a href="#cb32-26" tabindex="-1"></a><span class="co">#&gt; log(price)       0.577873    </span></span>
-<span id="cb32-27"><a href="#cb32-27" tabindex="-1"></a><span class="co">#&gt; t                0.007939 ** </span></span>
-<span id="cb32-28"><a href="#cb32-28" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb32-29"><a href="#cb32-29" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb32-30"><a href="#cb32-30" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb32-31"><a href="#cb32-31" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-32"><a href="#cb32-32" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14364 on 39 degrees of freedom</span></span>
-<span id="cb32-33"><a href="#cb32-33" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.34077,    Adjusted R-squared:  0.30696 </span></span>
-<span id="cb32-34"><a href="#cb32-34" tabindex="-1"></a><span class="co">#&gt; F-statistic:  10.08 on 2 and 39 DF,  p-value: 0.00029599</span></span>
-<span id="cb32-35"><a href="#cb32-35" tabindex="-1"></a><span class="co">#===</span></span>
-<span id="cb32-36"><a href="#cb32-36" tabindex="-1"></a><span class="co"># Ek bilgi: Statik modeli dynlm() fonksiyonu ile tahmin etmek.</span></span>
-<span id="cb32-37"><a href="#cb32-37" tabindex="-1"></a>data.ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(data, <span class="at">start =</span> <span class="dv">1947</span>) <span class="do">## Data 1947 yılından itibaren başlamış.</span></span>
-<span id="cb32-38"><a href="#cb32-38" tabindex="-1"></a>model<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">dynlm</span>(<span class="at">data =</span> data.ts, <span class="at">formula =</span> <span class="fu">log</span>(invpc) <span class="sc">~</span> <span class="fu">log</span>(price) <span class="sc">+</span> <span class="fu">trend</span>(data.ts), <span class="at">singular.ok =</span> <span class="cn">FALSE</span>) <span class="do">## dynlm() fonksiyonu statik modeller için de kullanılabilir. dynlm() fonksiyonunun avantajı data içinde trend ya da mevsimsellik değişkenleri olmasa da otomatik olarak oluşturabilmesidir. trend() fonksiyonu kullanarak modele lineer trend eklenebilir.</span></span>
-<span id="cb32-39"><a href="#cb32-39" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.1</span>) <span class="do">## Tahmin özeti. Yukarıdaki lm() fonksiyonu ile elde edilen sonucun aynısı.</span></span>
-<span id="cb32-40"><a href="#cb32-40" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-41"><a href="#cb32-41" tabindex="-1"></a><span class="co">#&gt; Time series regression with &quot;ts&quot; data:</span></span>
-<span id="cb32-42"><a href="#cb32-42" tabindex="-1"></a><span class="co">#&gt; Start = 1947, End = 1988</span></span>
-<span id="cb32-43"><a href="#cb32-43" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-44"><a href="#cb32-44" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb32-45"><a href="#cb32-45" tabindex="-1"></a><span class="co">#&gt; dynlm(formula = log(invpc) ~ log(price) + trend(data.ts), data = data.ts, </span></span>
-<span id="cb32-46"><a href="#cb32-46" tabindex="-1"></a><span class="co">#&gt;     singular.ok = FALSE)</span></span>
-<span id="cb32-47"><a href="#cb32-47" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-48"><a href="#cb32-48" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb32-49"><a href="#cb32-49" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q </span></span>
-<span id="cb32-50"><a href="#cb32-50" tabindex="-1"></a><span class="co">#&gt; -0.450919 -0.085832 -0.017342  0.085174 </span></span>
-<span id="cb32-51"><a href="#cb32-51" tabindex="-1"></a><span class="co">#&gt;       Max </span></span>
-<span id="cb32-52"><a href="#cb32-52" tabindex="-1"></a><span class="co">#&gt;  0.260242 </span></span>
-<span id="cb32-53"><a href="#cb32-53" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-54"><a href="#cb32-54" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb32-55"><a href="#cb32-55" tabindex="-1"></a><span class="co">#&gt;                  Estimate Std. Error t value</span></span>
-<span id="cb32-56"><a href="#cb32-56" tabindex="-1"></a><span class="co">#&gt; (Intercept)    -0.9130596  0.1356134 -6.7328</span></span>
-<span id="cb32-57"><a href="#cb32-57" tabindex="-1"></a><span class="co">#&gt; log(price)     -0.3809613  0.6788352 -0.5612</span></span>
-<span id="cb32-58"><a href="#cb32-58" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)  0.0098287  0.0035122  2.7984</span></span>
-<span id="cb32-59"><a href="#cb32-59" tabindex="-1"></a><span class="co">#&gt;                     Pr(&gt;|t|)    </span></span>
-<span id="cb32-60"><a href="#cb32-60" tabindex="-1"></a><span class="co">#&gt; (Intercept)    0.00000004997 ***</span></span>
-<span id="cb32-61"><a href="#cb32-61" tabindex="-1"></a><span class="co">#&gt; log(price)          0.577873    </span></span>
-<span id="cb32-62"><a href="#cb32-62" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)      0.007939 ** </span></span>
-<span id="cb32-63"><a href="#cb32-63" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb32-64"><a href="#cb32-64" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb32-65"><a href="#cb32-65" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb32-66"><a href="#cb32-66" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-67"><a href="#cb32-67" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14364 on 39 degrees of freedom</span></span>
-<span id="cb32-68"><a href="#cb32-68" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.34077,    Adjusted R-squared:  0.30696 </span></span>
-<span id="cb32-69"><a href="#cb32-69" tabindex="-1"></a><span class="co">#&gt; F-statistic:  10.08 on 2 and 39 DF,  p-value: 0.00029599</span></span>
-<span id="cb32-70"><a href="#cb32-70" tabindex="-1"></a><span class="co">#===</span></span>
+<span id="cb32-14"><a href="#cb32-14" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q       Max </span></span>
+<span id="cb32-15"><a href="#cb32-15" tabindex="-1"></a><span class="co">#&gt; -0.450919 -0.085832 -0.017342  0.085174  0.260242 </span></span>
+<span id="cb32-16"><a href="#cb32-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-17"><a href="#cb32-17" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb32-18"><a href="#cb32-18" tabindex="-1"></a><span class="co">#&gt;               Estimate Std. Error t value      Pr(&gt;|t|)</span></span>
+<span id="cb32-19"><a href="#cb32-19" tabindex="-1"></a><span class="co">#&gt; (Intercept) -0.9130596  0.1356134 -6.7328 0.00000004997</span></span>
+<span id="cb32-20"><a href="#cb32-20" tabindex="-1"></a><span class="co">#&gt; log(price)  -0.3809613  0.6788352 -0.5612      0.577873</span></span>
+<span id="cb32-21"><a href="#cb32-21" tabindex="-1"></a><span class="co">#&gt; t            0.0098287  0.0035122  2.7984      0.007939</span></span>
+<span id="cb32-22"><a href="#cb32-22" tabindex="-1"></a><span class="co">#&gt;                </span></span>
+<span id="cb32-23"><a href="#cb32-23" tabindex="-1"></a><span class="co">#&gt; (Intercept) ***</span></span>
+<span id="cb32-24"><a href="#cb32-24" tabindex="-1"></a><span class="co">#&gt; log(price)     </span></span>
+<span id="cb32-25"><a href="#cb32-25" tabindex="-1"></a><span class="co">#&gt; t           ** </span></span>
+<span id="cb32-26"><a href="#cb32-26" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb32-27"><a href="#cb32-27" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb32-28"><a href="#cb32-28" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb32-29"><a href="#cb32-29" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-30"><a href="#cb32-30" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14364 on 39 degrees of freedom</span></span>
+<span id="cb32-31"><a href="#cb32-31" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.34077,    Adjusted R-squared:  0.30696 </span></span>
+<span id="cb32-32"><a href="#cb32-32" tabindex="-1"></a><span class="co">#&gt; F-statistic:  10.08 on 2 and 39 DF,  p-value: 0.00029599</span></span>
+<span id="cb32-33"><a href="#cb32-33" tabindex="-1"></a><span class="co">#===</span></span>
+<span id="cb32-34"><a href="#cb32-34" tabindex="-1"></a><span class="co"># Ek bilgi: Statik modeli dynlm() fonksiyonu ile tahmin etmek.</span></span>
+<span id="cb32-35"><a href="#cb32-35" tabindex="-1"></a>data.ts <span class="ot">&lt;-</span> <span class="fu">ts</span>(data, <span class="at">start =</span> <span class="dv">1947</span>) <span class="do">## Data 1947 yılından itibaren başlamış.</span></span>
+<span id="cb32-36"><a href="#cb32-36" tabindex="-1"></a>model<span class="fl">.1</span> <span class="ot">&lt;-</span> <span class="fu">dynlm</span>(<span class="at">data =</span> data.ts, <span class="at">formula =</span> <span class="fu">log</span>(invpc) <span class="sc">~</span> <span class="fu">log</span>(price) <span class="sc">+</span> <span class="fu">trend</span>(data.ts), <span class="at">singular.ok =</span> <span class="cn">FALSE</span>) <span class="do">## dynlm() fonksiyonu statik modeller için de kullanılabilir. dynlm() fonksiyonunun avantajı data içinde trend ya da mevsimsellik değişkenleri olmasa da otomatik olarak oluşturabilmesidir. trend() fonksiyonu kullanarak modele lineer trend eklenebilir.</span></span>
+<span id="cb32-37"><a href="#cb32-37" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.1</span>) <span class="do">## Tahmin özeti. Yukarıdaki lm() fonksiyonu ile elde edilen sonucun aynısı.</span></span>
+<span id="cb32-38"><a href="#cb32-38" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-39"><a href="#cb32-39" tabindex="-1"></a><span class="co">#&gt; Time series regression with &quot;ts&quot; data:</span></span>
+<span id="cb32-40"><a href="#cb32-40" tabindex="-1"></a><span class="co">#&gt; Start = 1947, End = 1988</span></span>
+<span id="cb32-41"><a href="#cb32-41" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-42"><a href="#cb32-42" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb32-43"><a href="#cb32-43" tabindex="-1"></a><span class="co">#&gt; dynlm(formula = log(invpc) ~ log(price) + trend(data.ts), data = data.ts, </span></span>
+<span id="cb32-44"><a href="#cb32-44" tabindex="-1"></a><span class="co">#&gt;     singular.ok = FALSE)</span></span>
+<span id="cb32-45"><a href="#cb32-45" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-46"><a href="#cb32-46" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb32-47"><a href="#cb32-47" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q       Max </span></span>
+<span id="cb32-48"><a href="#cb32-48" tabindex="-1"></a><span class="co">#&gt; -0.450919 -0.085832 -0.017342  0.085174  0.260242 </span></span>
+<span id="cb32-49"><a href="#cb32-49" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-50"><a href="#cb32-50" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb32-51"><a href="#cb32-51" tabindex="-1"></a><span class="co">#&gt;                  Estimate Std. Error t value</span></span>
+<span id="cb32-52"><a href="#cb32-52" tabindex="-1"></a><span class="co">#&gt; (Intercept)    -0.9130596  0.1356134 -6.7328</span></span>
+<span id="cb32-53"><a href="#cb32-53" tabindex="-1"></a><span class="co">#&gt; log(price)     -0.3809613  0.6788352 -0.5612</span></span>
+<span id="cb32-54"><a href="#cb32-54" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)  0.0098287  0.0035122  2.7984</span></span>
+<span id="cb32-55"><a href="#cb32-55" tabindex="-1"></a><span class="co">#&gt;                     Pr(&gt;|t|)    </span></span>
+<span id="cb32-56"><a href="#cb32-56" tabindex="-1"></a><span class="co">#&gt; (Intercept)    0.00000004997 ***</span></span>
+<span id="cb32-57"><a href="#cb32-57" tabindex="-1"></a><span class="co">#&gt; log(price)          0.577873    </span></span>
+<span id="cb32-58"><a href="#cb32-58" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)      0.007939 ** </span></span>
+<span id="cb32-59"><a href="#cb32-59" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb32-60"><a href="#cb32-60" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb32-61"><a href="#cb32-61" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb32-62"><a href="#cb32-62" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-63"><a href="#cb32-63" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14364 on 39 degrees of freedom</span></span>
+<span id="cb32-64"><a href="#cb32-64" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.34077,    Adjusted R-squared:  0.30696 </span></span>
+<span id="cb32-65"><a href="#cb32-65" tabindex="-1"></a><span class="co">#&gt; F-statistic:  10.08 on 2 and 39 DF,  p-value: 0.00029599</span></span>
+<span id="cb32-66"><a href="#cb32-66" tabindex="-1"></a><span class="co">#===</span></span>
+<span id="cb32-67"><a href="#cb32-67" tabindex="-1"></a></span>
+<span id="cb32-68"><a href="#cb32-68" tabindex="-1"></a><span class="co"># Model 2: Ev yatırımları ve trend arasındaki model.</span></span>
+<span id="cb32-69"><a href="#cb32-69" tabindex="-1"></a>model<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(invpc) <span class="sc">~</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-70"><a href="#cb32-70" tabindex="-1"></a>ln.invpc.resid <span class="ot">&lt;-</span> model<span class="fl">.2</span><span class="sc">$</span>residuals <span class="do">## Kalıntılar.</span></span>
 <span id="cb32-71"><a href="#cb32-71" tabindex="-1"></a></span>
-<span id="cb32-72"><a href="#cb32-72" tabindex="-1"></a><span class="co"># Model 2: Ev yatırımları ve trend arasındaki model.</span></span>
-<span id="cb32-73"><a href="#cb32-73" tabindex="-1"></a>model<span class="fl">.2</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(invpc) <span class="sc">~</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb32-74"><a href="#cb32-74" tabindex="-1"></a>ln.invpc.resid <span class="ot">&lt;-</span> model<span class="fl">.2</span><span class="sc">$</span>residuals <span class="do">## Kalıntılar.</span></span>
+<span id="cb32-72"><a href="#cb32-72" tabindex="-1"></a><span class="co"># Model 3: Fiyatlar ve trend arasındaki model.</span></span>
+<span id="cb32-73"><a href="#cb32-73" tabindex="-1"></a>model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(price) <span class="sc">~</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
+<span id="cb32-74"><a href="#cb32-74" tabindex="-1"></a>ln.price.resid <span class="ot">&lt;-</span> model<span class="fl">.3</span><span class="sc">$</span>residuals <span class="do">## Kalıntılar.</span></span>
 <span id="cb32-75"><a href="#cb32-75" tabindex="-1"></a></span>
-<span id="cb32-76"><a href="#cb32-76" tabindex="-1"></a><span class="co"># Model 3: Fiyatlar ve trend arasındaki model.</span></span>
-<span id="cb32-77"><a href="#cb32-77" tabindex="-1"></a>model<span class="fl">.3</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">data =</span> data, <span class="at">formula =</span> <span class="fu">log</span>(price) <span class="sc">~</span> t, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb32-78"><a href="#cb32-78" tabindex="-1"></a>ln.price.resid <span class="ot">&lt;-</span> model<span class="fl">.3</span><span class="sc">$</span>residuals <span class="do">## Kalıntılar.</span></span>
-<span id="cb32-79"><a href="#cb32-79" tabindex="-1"></a></span>
-<span id="cb32-80"><a href="#cb32-80" tabindex="-1"></a>model<span class="fl">.4</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> ln.invpc.resid <span class="sc">~</span> ln.price.resid, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>) <span class="do">## Data argumanını kullanmadıgımıza ve aynı uzunlukta iki değişken kullandığımıza dikkat edin.</span></span>
-<span id="cb32-81"><a href="#cb32-81" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.4</span>) <span class="do">## Tahmin özeti.</span></span>
-<span id="cb32-82"><a href="#cb32-82" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-83"><a href="#cb32-83" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
-<span id="cb32-84"><a href="#cb32-84" tabindex="-1"></a><span class="co">#&gt; lm(formula = ln.invpc.resid ~ ln.price.resid, singular.ok = FALSE)</span></span>
+<span id="cb32-76"><a href="#cb32-76" tabindex="-1"></a>model<span class="fl">.4</span> <span class="ot">&lt;-</span> <span class="fu">lm</span>(<span class="at">formula =</span> ln.invpc.resid <span class="sc">~</span> ln.price.resid, <span class="at">singular.ok =</span> <span class="cn">FALSE</span>) <span class="do">## Data argumanını kullanmadıgımıza ve aynı uzunlukta iki değişken kullandığımıza dikkat edin.</span></span>
+<span id="cb32-77"><a href="#cb32-77" tabindex="-1"></a><span class="fu">summary</span>(model<span class="fl">.4</span>) <span class="do">## Tahmin özeti.</span></span>
+<span id="cb32-78"><a href="#cb32-78" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-79"><a href="#cb32-79" tabindex="-1"></a><span class="co">#&gt; Call:</span></span>
+<span id="cb32-80"><a href="#cb32-80" tabindex="-1"></a><span class="co">#&gt; lm(formula = ln.invpc.resid ~ ln.price.resid, singular.ok = FALSE)</span></span>
+<span id="cb32-81"><a href="#cb32-81" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-82"><a href="#cb32-82" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
+<span id="cb32-83"><a href="#cb32-83" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q       Max </span></span>
+<span id="cb32-84"><a href="#cb32-84" tabindex="-1"></a><span class="co">#&gt; -0.450919 -0.085832 -0.017342  0.085174  0.260242 </span></span>
 <span id="cb32-85"><a href="#cb32-85" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-86"><a href="#cb32-86" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb32-87"><a href="#cb32-87" tabindex="-1"></a><span class="co">#&gt;       Min        1Q    Median        3Q </span></span>
-<span id="cb32-88"><a href="#cb32-88" tabindex="-1"></a><span class="co">#&gt; -0.450919 -0.085832 -0.017342  0.085174 </span></span>
-<span id="cb32-89"><a href="#cb32-89" tabindex="-1"></a><span class="co">#&gt;       Max </span></span>
-<span id="cb32-90"><a href="#cb32-90" tabindex="-1"></a><span class="co">#&gt;  0.260242 </span></span>
-<span id="cb32-91"><a href="#cb32-91" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-92"><a href="#cb32-92" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb32-93"><a href="#cb32-93" tabindex="-1"></a><span class="co">#&gt;                   Estimate  Std. Error t value</span></span>
-<span id="cb32-94"><a href="#cb32-94" tabindex="-1"></a><span class="co">#&gt; (Intercept)     8.1579e-19  2.1885e-02  0.0000</span></span>
-<span id="cb32-95"><a href="#cb32-95" tabindex="-1"></a><span class="co">#&gt; ln.price.resid -3.8096e-01  6.7030e-01 -0.5683</span></span>
-<span id="cb32-96"><a href="#cb32-96" tabindex="-1"></a><span class="co">#&gt;                Pr(&gt;|t|)</span></span>
-<span id="cb32-97"><a href="#cb32-97" tabindex="-1"></a><span class="co">#&gt; (Intercept)       1.000</span></span>
-<span id="cb32-98"><a href="#cb32-98" tabindex="-1"></a><span class="co">#&gt; ln.price.resid    0.573</span></span>
-<span id="cb32-99"><a href="#cb32-99" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-100"><a href="#cb32-100" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14183 on 40 degrees of freedom</span></span>
-<span id="cb32-101"><a href="#cb32-101" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.0080108,  Adjusted R-squared:  -0.016789 </span></span>
-<span id="cb32-102"><a href="#cb32-102" tabindex="-1"></a><span class="co">#&gt; F-statistic: 0.32302 on 1 and 40 DF,  p-value: 0.57298</span></span>
-<span id="cb32-103"><a href="#cb32-103" tabindex="-1"></a><span class="co"># Model 1 ve Model 4 arasında karşılaştırma yapmak amacıyla stargazer fonksiyonu kullanılıyor.</span></span>
-<span id="cb32-104"><a href="#cb32-104" tabindex="-1"></a><span class="fu">stargazer</span>(model<span class="fl">.1</span>, model<span class="fl">.4</span>, <span class="at">type =</span> <span class="st">&quot;text&quot;</span>)</span>
-<span id="cb32-105"><a href="#cb32-105" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb32-106"><a href="#cb32-106" tabindex="-1"></a><span class="co">#&gt; =============================================================</span></span>
-<span id="cb32-107"><a href="#cb32-107" tabindex="-1"></a><span class="co">#&gt;                                Dependent variable:           </span></span>
-<span id="cb32-108"><a href="#cb32-108" tabindex="-1"></a><span class="co">#&gt;                     -----------------------------------------</span></span>
-<span id="cb32-109"><a href="#cb32-109" tabindex="-1"></a><span class="co">#&gt;                           log(invpc)         ln.invpc.resid  </span></span>
-<span id="cb32-110"><a href="#cb32-110" tabindex="-1"></a><span class="co">#&gt;                            dynamic                OLS        </span></span>
-<span id="cb32-111"><a href="#cb32-111" tabindex="-1"></a><span class="co">#&gt;                             linear                           </span></span>
-<span id="cb32-112"><a href="#cb32-112" tabindex="-1"></a><span class="co">#&gt;                              (1)                  (2)        </span></span>
-<span id="cb32-113"><a href="#cb32-113" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------------------</span></span>
-<span id="cb32-114"><a href="#cb32-114" tabindex="-1"></a><span class="co">#&gt; log(price)                  -0.381                           </span></span>
-<span id="cb32-115"><a href="#cb32-115" tabindex="-1"></a><span class="co">#&gt;                            (0.679)                           </span></span>
+<span id="cb32-86"><a href="#cb32-86" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb32-87"><a href="#cb32-87" tabindex="-1"></a><span class="co">#&gt;                   Estimate  Std. Error t value Pr(&gt;|t|)</span></span>
+<span id="cb32-88"><a href="#cb32-88" tabindex="-1"></a><span class="co">#&gt; (Intercept)     8.1473e-19  2.1885e-02  0.0000    1.000</span></span>
+<span id="cb32-89"><a href="#cb32-89" tabindex="-1"></a><span class="co">#&gt; ln.price.resid -3.8096e-01  6.7030e-01 -0.5683    0.573</span></span>
+<span id="cb32-90"><a href="#cb32-90" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-91"><a href="#cb32-91" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.14183 on 40 degrees of freedom</span></span>
+<span id="cb32-92"><a href="#cb32-92" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.0080108,  Adjusted R-squared:  -0.016789 </span></span>
+<span id="cb32-93"><a href="#cb32-93" tabindex="-1"></a><span class="co">#&gt; F-statistic: 0.32302 on 1 and 40 DF,  p-value: 0.57298</span></span>
+<span id="cb32-94"><a href="#cb32-94" tabindex="-1"></a><span class="co"># Model 1 ve Model 4 arasında karşılaştırma yapmak amacıyla stargazer fonksiyonu kullanılıyor.</span></span>
+<span id="cb32-95"><a href="#cb32-95" tabindex="-1"></a><span class="fu">stargazer</span>(model<span class="fl">.1</span>, model<span class="fl">.4</span>, <span class="at">type =</span> <span class="st">&quot;text&quot;</span>)</span>
+<span id="cb32-96"><a href="#cb32-96" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb32-97"><a href="#cb32-97" tabindex="-1"></a><span class="co">#&gt; =============================================================</span></span>
+<span id="cb32-98"><a href="#cb32-98" tabindex="-1"></a><span class="co">#&gt;                                Dependent variable:           </span></span>
+<span id="cb32-99"><a href="#cb32-99" tabindex="-1"></a><span class="co">#&gt;                     -----------------------------------------</span></span>
+<span id="cb32-100"><a href="#cb32-100" tabindex="-1"></a><span class="co">#&gt;                           log(invpc)         ln.invpc.resid  </span></span>
+<span id="cb32-101"><a href="#cb32-101" tabindex="-1"></a><span class="co">#&gt;                            dynamic                OLS        </span></span>
+<span id="cb32-102"><a href="#cb32-102" tabindex="-1"></a><span class="co">#&gt;                             linear                           </span></span>
+<span id="cb32-103"><a href="#cb32-103" tabindex="-1"></a><span class="co">#&gt;                              (1)                  (2)        </span></span>
+<span id="cb32-104"><a href="#cb32-104" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------------------</span></span>
+<span id="cb32-105"><a href="#cb32-105" tabindex="-1"></a><span class="co">#&gt; log(price)                  -0.381                           </span></span>
+<span id="cb32-106"><a href="#cb32-106" tabindex="-1"></a><span class="co">#&gt;                            (0.679)                           </span></span>
+<span id="cb32-107"><a href="#cb32-107" tabindex="-1"></a><span class="co">#&gt;                                                              </span></span>
+<span id="cb32-108"><a href="#cb32-108" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)             0.010***                          </span></span>
+<span id="cb32-109"><a href="#cb32-109" tabindex="-1"></a><span class="co">#&gt;                            (0.004)                           </span></span>
+<span id="cb32-110"><a href="#cb32-110" tabindex="-1"></a><span class="co">#&gt;                                                              </span></span>
+<span id="cb32-111"><a href="#cb32-111" tabindex="-1"></a><span class="co">#&gt; ln.price.resid                                   -0.381      </span></span>
+<span id="cb32-112"><a href="#cb32-112" tabindex="-1"></a><span class="co">#&gt;                                                 (0.670)      </span></span>
+<span id="cb32-113"><a href="#cb32-113" tabindex="-1"></a><span class="co">#&gt;                                                              </span></span>
+<span id="cb32-114"><a href="#cb32-114" tabindex="-1"></a><span class="co">#&gt; Constant                  -0.913***              0.000       </span></span>
+<span id="cb32-115"><a href="#cb32-115" tabindex="-1"></a><span class="co">#&gt;                            (0.136)              (0.022)      </span></span>
 <span id="cb32-116"><a href="#cb32-116" tabindex="-1"></a><span class="co">#&gt;                                                              </span></span>
-<span id="cb32-117"><a href="#cb32-117" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)             0.010***                          </span></span>
-<span id="cb32-118"><a href="#cb32-118" tabindex="-1"></a><span class="co">#&gt;                            (0.004)                           </span></span>
-<span id="cb32-119"><a href="#cb32-119" tabindex="-1"></a><span class="co">#&gt;                                                              </span></span>
-<span id="cb32-120"><a href="#cb32-120" tabindex="-1"></a><span class="co">#&gt; ln.price.resid                                   -0.381      </span></span>
-<span id="cb32-121"><a href="#cb32-121" tabindex="-1"></a><span class="co">#&gt;                                                 (0.670)      </span></span>
-<span id="cb32-122"><a href="#cb32-122" tabindex="-1"></a><span class="co">#&gt;                                                              </span></span>
-<span id="cb32-123"><a href="#cb32-123" tabindex="-1"></a><span class="co">#&gt; Constant                  -0.913***              0.000       </span></span>
-<span id="cb32-124"><a href="#cb32-124" tabindex="-1"></a><span class="co">#&gt;                            (0.136)              (0.022)      </span></span>
-<span id="cb32-125"><a href="#cb32-125" tabindex="-1"></a><span class="co">#&gt;                                                              </span></span>
-<span id="cb32-126"><a href="#cb32-126" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------------------</span></span>
-<span id="cb32-127"><a href="#cb32-127" tabindex="-1"></a><span class="co">#&gt; Observations                  42                   42        </span></span>
-<span id="cb32-128"><a href="#cb32-128" tabindex="-1"></a><span class="co">#&gt; R2                          0.341                0.008       </span></span>
-<span id="cb32-129"><a href="#cb32-129" tabindex="-1"></a><span class="co">#&gt; Adjusted R2                 0.307                -0.017      </span></span>
-<span id="cb32-130"><a href="#cb32-130" tabindex="-1"></a><span class="co">#&gt; Residual Std. Error    0.144 (df = 39)      0.142 (df = 40)  </span></span>
-<span id="cb32-131"><a href="#cb32-131" tabindex="-1"></a><span class="co">#&gt; F Statistic         10.080*** (df = 2; 39) 0.323 (df = 1; 40)</span></span>
-<span id="cb32-132"><a href="#cb32-132" tabindex="-1"></a><span class="co">#&gt; =============================================================</span></span>
-<span id="cb32-133"><a href="#cb32-133" tabindex="-1"></a><span class="co">#&gt; Note:                             *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</span></span></code></pre></div>
+<span id="cb32-117"><a href="#cb32-117" tabindex="-1"></a><span class="co">#&gt; -------------------------------------------------------------</span></span>
+<span id="cb32-118"><a href="#cb32-118" tabindex="-1"></a><span class="co">#&gt; Observations                  42                   42        </span></span>
+<span id="cb32-119"><a href="#cb32-119" tabindex="-1"></a><span class="co">#&gt; R2                          0.341                0.008       </span></span>
+<span id="cb32-120"><a href="#cb32-120" tabindex="-1"></a><span class="co">#&gt; Adjusted R2                 0.307                -0.017      </span></span>
+<span id="cb32-121"><a href="#cb32-121" tabindex="-1"></a><span class="co">#&gt; Residual Std. Error    0.144 (df = 39)      0.142 (df = 40)  </span></span>
+<span id="cb32-122"><a href="#cb32-122" tabindex="-1"></a><span class="co">#&gt; F Statistic         10.080*** (df = 2; 39) 0.323 (df = 1; 40)</span></span>
+<span id="cb32-123"><a href="#cb32-123" tabindex="-1"></a><span class="co">#&gt; =============================================================</span></span>
+<span id="cb32-124"><a href="#cb32-124" tabindex="-1"></a><span class="co">#&gt; Note:                             *p&lt;0.1; **p&lt;0.05; ***p&lt;0.01</span></span></code></pre></div>
 </div>
 </div>
 <div id="Seasonality" class="section level1" number="7">
@@ -7386,38 +7326,36 @@ Aksi durumda mevsimsel kukla değişkenler kullanılmamalıdır.</li>
 <span id="cb33-15"><a href="#cb33-15" tabindex="-1"></a><span class="co">#&gt;     data = data.ts, singular.ok = FALSE)</span></span>
 <span id="cb33-16"><a href="#cb33-16" tabindex="-1"></a><span class="co">#&gt; </span></span>
 <span id="cb33-17"><a href="#cb33-17" tabindex="-1"></a><span class="co">#&gt; Residuals:</span></span>
-<span id="cb33-18"><a href="#cb33-18" tabindex="-1"></a><span class="co">#&gt;        Min         1Q     Median         3Q </span></span>
-<span id="cb33-19"><a href="#cb33-19" tabindex="-1"></a><span class="co">#&gt; -0.0782772 -0.0171592 -0.0022733  0.0144145 </span></span>
-<span id="cb33-20"><a href="#cb33-20" tabindex="-1"></a><span class="co">#&gt;        Max </span></span>
-<span id="cb33-21"><a href="#cb33-21" tabindex="-1"></a><span class="co">#&gt;  0.0846244 </span></span>
-<span id="cb33-22"><a href="#cb33-22" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb33-23"><a href="#cb33-23" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
-<span id="cb33-24"><a href="#cb33-24" tabindex="-1"></a><span class="co">#&gt;                      Estimate  Std. Error</span></span>
-<span id="cb33-25"><a href="#cb33-25" tabindex="-1"></a><span class="co">#&gt; (Intercept)       -0.80031642  0.12792846</span></span>
-<span id="cb33-26"><a href="#cb33-26" tabindex="-1"></a><span class="co">#&gt; log(gnp)           0.97191293  0.02319766</span></span>
-<span id="cb33-27"><a href="#cb33-27" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)    -0.02730928  0.00171521</span></span>
-<span id="cb33-28"><a href="#cb33-28" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q2  0.00035878  0.00656455</span></span>
-<span id="cb33-29"><a href="#cb33-29" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q3 -0.00194420  0.00656537</span></span>
-<span id="cb33-30"><a href="#cb33-30" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q4  0.00085979  0.00656668</span></span>
-<span id="cb33-31"><a href="#cb33-31" tabindex="-1"></a><span class="co">#&gt;                    t value       Pr(&gt;|t|)    </span></span>
-<span id="cb33-32"><a href="#cb33-32" tabindex="-1"></a><span class="co">#&gt; (Intercept)        -6.2560 0.000000005277 ***</span></span>
-<span id="cb33-33"><a href="#cb33-33" tabindex="-1"></a><span class="co">#&gt; log(gnp)           41.8970      &lt; 2.2e-16 ***</span></span>
-<span id="cb33-34"><a href="#cb33-34" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)    -15.9218      &lt; 2.2e-16 ***</span></span>
-<span id="cb33-35"><a href="#cb33-35" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q2   0.0547         0.9565    </span></span>
-<span id="cb33-36"><a href="#cb33-36" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q3  -0.2961         0.7676    </span></span>
-<span id="cb33-37"><a href="#cb33-37" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q4   0.1309         0.8960    </span></span>
-<span id="cb33-38"><a href="#cb33-38" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
-<span id="cb33-39"><a href="#cb33-39" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
-<span id="cb33-40"><a href="#cb33-40" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
-<span id="cb33-41"><a href="#cb33-41" tabindex="-1"></a><span class="co">#&gt; </span></span>
-<span id="cb33-42"><a href="#cb33-42" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.027065 on 130 degrees of freedom</span></span>
-<span id="cb33-43"><a href="#cb33-43" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.99642,    Adjusted R-squared:  0.99628 </span></span>
-<span id="cb33-44"><a href="#cb33-44" tabindex="-1"></a><span class="co">#&gt; F-statistic: 7234.2 on 5 and 130 DF,  p-value: &lt; 2.22e-16</span></span>
-<span id="cb33-45"><a href="#cb33-45" tabindex="-1"></a><span class="co"># Parametre isimleri daha sonra kullanılmak üzere kaydediliyor.</span></span>
-<span id="cb33-46"><a href="#cb33-46" tabindex="-1"></a>coef.names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(model))</span>
-<span id="cb33-47"><a href="#cb33-47" tabindex="-1"></a></span>
-<span id="cb33-48"><a href="#cb33-48" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile tüm mevsimsel kukla değişken parametrelerinin birlikte istatistiki olarak anlamlı olup olmadığının testi.</span></span>
-<span id="cb33-49"><a href="#cb33-49" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;season(data.ts)Q2 = 0&quot;</span>, <span class="st">&quot;season(data.ts)Q3 = 0&quot;</span>, <span class="st">&quot;season(data.ts)Q4 = 0&quot;</span>)) <span class="do">## p-değeri %5 anlamlılık düzeyinden büyük olduğundan boş hipotez reddedilemez ve mevsimsel kukla değişkenler kullanılmamalıdır.</span></span></code></pre></div>
+<span id="cb33-18"><a href="#cb33-18" tabindex="-1"></a><span class="co">#&gt;        Min         1Q     Median         3Q        Max </span></span>
+<span id="cb33-19"><a href="#cb33-19" tabindex="-1"></a><span class="co">#&gt; -0.0782772 -0.0171592 -0.0022733  0.0144145  0.0846244 </span></span>
+<span id="cb33-20"><a href="#cb33-20" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb33-21"><a href="#cb33-21" tabindex="-1"></a><span class="co">#&gt; Coefficients:</span></span>
+<span id="cb33-22"><a href="#cb33-22" tabindex="-1"></a><span class="co">#&gt;                      Estimate  Std. Error  t value</span></span>
+<span id="cb33-23"><a href="#cb33-23" tabindex="-1"></a><span class="co">#&gt; (Intercept)       -0.80031642  0.12792846  -6.2560</span></span>
+<span id="cb33-24"><a href="#cb33-24" tabindex="-1"></a><span class="co">#&gt; log(gnp)           0.97191293  0.02319766  41.8970</span></span>
+<span id="cb33-25"><a href="#cb33-25" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)    -0.02730928  0.00171521 -15.9218</span></span>
+<span id="cb33-26"><a href="#cb33-26" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q2  0.00035878  0.00656455   0.0547</span></span>
+<span id="cb33-27"><a href="#cb33-27" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q3 -0.00194420  0.00656537  -0.2961</span></span>
+<span id="cb33-28"><a href="#cb33-28" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q4  0.00085979  0.00656668   0.1309</span></span>
+<span id="cb33-29"><a href="#cb33-29" tabindex="-1"></a><span class="co">#&gt;                         Pr(&gt;|t|)    </span></span>
+<span id="cb33-30"><a href="#cb33-30" tabindex="-1"></a><span class="co">#&gt; (Intercept)       0.000000005277 ***</span></span>
+<span id="cb33-31"><a href="#cb33-31" tabindex="-1"></a><span class="co">#&gt; log(gnp)               &lt; 2.2e-16 ***</span></span>
+<span id="cb33-32"><a href="#cb33-32" tabindex="-1"></a><span class="co">#&gt; trend(data.ts)         &lt; 2.2e-16 ***</span></span>
+<span id="cb33-33"><a href="#cb33-33" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q2         0.9565    </span></span>
+<span id="cb33-34"><a href="#cb33-34" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q3         0.7676    </span></span>
+<span id="cb33-35"><a href="#cb33-35" tabindex="-1"></a><span class="co">#&gt; season(data.ts)Q4         0.8960    </span></span>
+<span id="cb33-36"><a href="#cb33-36" tabindex="-1"></a><span class="co">#&gt; ---</span></span>
+<span id="cb33-37"><a href="#cb33-37" tabindex="-1"></a><span class="co">#&gt; Signif. codes:  </span></span>
+<span id="cb33-38"><a href="#cb33-38" tabindex="-1"></a><span class="co">#&gt; 0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1</span></span>
+<span id="cb33-39"><a href="#cb33-39" tabindex="-1"></a><span class="co">#&gt; </span></span>
+<span id="cb33-40"><a href="#cb33-40" tabindex="-1"></a><span class="co">#&gt; Residual standard error: 0.027065 on 130 degrees of freedom</span></span>
+<span id="cb33-41"><a href="#cb33-41" tabindex="-1"></a><span class="co">#&gt; Multiple R-squared:  0.99642,    Adjusted R-squared:  0.99628 </span></span>
+<span id="cb33-42"><a href="#cb33-42" tabindex="-1"></a><span class="co">#&gt; F-statistic: 7234.2 on 5 and 130 DF,  p-value: &lt; 2.22e-16</span></span>
+<span id="cb33-43"><a href="#cb33-43" tabindex="-1"></a><span class="co"># Parametre isimleri daha sonra kullanılmak üzere kaydediliyor.</span></span>
+<span id="cb33-44"><a href="#cb33-44" tabindex="-1"></a>coef.names <span class="ot">&lt;-</span> <span class="fu">names</span>(<span class="fu">coef</span>(model))</span>
+<span id="cb33-45"><a href="#cb33-45" tabindex="-1"></a></span>
+<span id="cb33-46"><a href="#cb33-46" tabindex="-1"></a><span class="co"># Hipotez Testi 1: linearHypothesis fonksiyonu ile tüm mevsimsel kukla değişken parametrelerinin birlikte istatistiki olarak anlamlı olup olmadığının testi.</span></span>
+<span id="cb33-47"><a href="#cb33-47" tabindex="-1"></a><span class="fu">linearHypothesis</span>(model, <span class="fu">c</span>(<span class="st">&quot;season(data.ts)Q2 = 0&quot;</span>, <span class="st">&quot;season(data.ts)Q3 = 0&quot;</span>, <span class="st">&quot;season(data.ts)Q4 = 0&quot;</span>)) <span class="do">## p-değeri %5 anlamlılık düzeyinden büyük olduğundan boş hipotez reddedilemez ve mevsimsel kukla değişkenler kullanılmamalıdır.</span></span></code></pre></div>
 <div data-pagedtable="false">
 <script data-pagedtable-source type="application/json">
 {"columns":[{"label":[""],"name":["_rn_"],"type":[""],"align":["left"]},{"label":["Res.Df"],"name":[1],"type":["dbl"],"align":["right"]},{"label":["RSS"],"name":[2],"type":["dbl"],"align":["right"]},{"label":["Df"],"name":[3],"type":["dbl"],"align":["right"]},{"label":["Sum of Sq"],"name":[4],"type":["dbl"],"align":["right"]},{"label":["F"],"name":[5],"type":["dbl"],"align":["right"]},{"label":["Pr(>F)"],"name":[6],"type":["dbl"],"align":["right"]}],"data":[{"1":"133","2":"0.095381596","3":"NA","4":"NA","5":"NA","6":"NA","_rn_":"1"},{"1":"130","2":"0.095228045","3":"3","4":"0.00015355057","5":"0.069872882","6":"0.97591743","_rn_":"2"}],"options":{"columns":{"min":{},"max":[10]},"rows":{"min":[5],"max":[5]},"pages":{}}}
